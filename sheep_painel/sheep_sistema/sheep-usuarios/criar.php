@@ -18,7 +18,7 @@
         <!--FIM TOKEN E RETORNOS TOPO clientes SITE--->
 
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-usuario/filtros/criar&token=" . $_SESSION['timeWT']?>" method="post" enctype="multipart/form-data">
 
 
             <div class="section-body">
@@ -69,36 +69,11 @@
 
                                 </div>
 
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">CNPJ(Opcional)</label>
-                                    <div class="col-md-7">
-                                        <input type="text" id="cnpj" class="form-control" name="cnpj" placeholder="Adicione o CNPJ">
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Razão Social(Opcional)</label>
-                                    <div class="col-md-7">
-                                        <input type="text" class="form-control" name="razao_social" placeholder="Adicione o nome da sua empresa">
-                                    </div>
-
-                                </div>
-
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">E-mail(Obrigatório)</label>
                                     <div class="col-md-7">
                                         <input type="email" class="form-control" name="email" placeholder="E-mail" required="">
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Telefone(Opcional)</label>
-                                    <div class="col-md-7">
-                                        <input type="text" id="fone" class="form-control" name="fone" placeholder="Telefone" required="">
                                     </div>
 
                                 </div>
@@ -153,7 +128,7 @@
                                         <select class="form-control select2 load_estados" name="estado">
 
 
-                                            <option value="">Paraná</option>
+                                            <option value="1">Paraná</option>
 
 
                                         </select>
@@ -165,7 +140,7 @@
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control select2" name="cidade" id="load_cidades">
 
-                                            <option value="">Curitiba</option>
+                                            <option value="2">Curitiba</option>
 
 
                                         </select>
@@ -200,17 +175,16 @@
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control selectric" name="status">
                                             <option value="S">Publicado</option>
-                                            <option value="R">Rascunho</option>
-                                            <option value="P">Pendente</option>
-                                            <option value="C">Cancelado</option>
+                                            <option value="N">Cancelado</option>
                                         </select>
                                     </div>
                                 </div>
 
 
-                                <input type="hidden" name="usuario" value="<">
-                                <input type="hidden" name="sheep_firewall" value="">
-                                <input type="hidden" name="tipo" value="">
+                                <input type="hidden" name="usuario" value="<?=$_SESSION['sheep_user']['id'] ?>">
+                                <input type="hidden" name="sheep_firewall" value="<?= $_SESSION['_sheep_firewall']?>">
+                                <input type="hidden" name="tipo" value="usuarios">
+                                <input type="hidden" name="tipo_cadastro" value="criar">
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">

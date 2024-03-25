@@ -1,4 +1,35 @@
+<?php
 
+//Puxando do banco o numero de usuarios ativos
+$sheep->Leitura('usuarios', "WHERE status = 'S'");
+$clientes = Formata::Resultado($sheep);
+if($clientes){
+  $contaAtivo = $sheep->getContaLinhas();
+}else{
+  $contaAtivo = 0; 
+}
+
+//Puxando do banco o numero de todos usuarios
+
+$sheep->Leitura('usuarios');
+$clientes = Formata::Resultado($sheep);
+if($clientes){
+  $contaTodos = $sheep->getContaLinhas();
+}else{
+  $contaTodos = 0; 
+}
+
+//Puxando do banco o numero de usuarios canceladas
+
+$sheep->Leitura('usuarios', "WHERE status != 'S'");
+$clientes = Formata::Resultado($sheep);
+if($clientes){
+  $contaCancelados = $sheep->getContaLinhas();
+}else{
+  $contaCancelados = 0; 
+}
+
+?>
 
 <div class="row">
   <div class="col-12">
@@ -17,11 +48,14 @@
         <ul class="nav nav-pills">
 
           <li class="nav-item">
-            <a class="nav-link active" href="">Todos <span class="badge badge-white">77</span></a>
+            <a class="nav-link active" href="">Todos <span class="badge badge-white"><?= $contaTodos ?></span></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="">Cancelados <span class="badge badge-primary">77</span></a>
+            <a class="nav-link" href="">Ativos <span class="badge badge-primary"><?= $contaAtivo ?></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cancelados <span class="badge badge-primary"><?=$contaCancelados?></span></a>
           </li>
 
           <li class="nav-item">
