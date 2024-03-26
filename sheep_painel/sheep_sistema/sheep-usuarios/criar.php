@@ -127,8 +127,16 @@
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control select2 load_estados" name="estado">
 
-
-                                            <option value="1">Paraná</option>
+                                            <?php 
+                                                $sheep->Leitura('app_estados', "ORDER BY estado_nome ASC");
+                                                $estadosUsuario = Formata::Resultado($sheep);
+                                                if($estadosUsuario){
+                                                    foreach($sheep->getResultado() as $estado){
+                                                        $estado = (object) $estado;
+                                               
+                                            ?>
+                                            <option value="<?= $estado->estado_id ?>"><?= $estado->estado_nome ?></option>
+                                            <?php }} ?>
 
 
                                         </select>
@@ -140,7 +148,16 @@
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control select2" name="cidade" id="load_cidades">
 
-                                            <option value="2">Curitiba</option>
+                                        <?php 
+                                                $sheep->Leitura('app_cidades', "ORDER BY cidade_nome ASC");
+                                                $cidadeUsuario = Formata::Resultado($sheep);
+                                                if($cidadeUsuario){
+                                                    foreach($sheep->getResultado() as $cidade){
+                                                        $cidade = (object) $cidade;
+                                               
+                                            ?>
+                                            <option value="<?= $cidade->cidade_id ?>"><?= $cidade->cidade_nome ?></option>
+                                            <?php }} ?>
 
 
                                         </select>
