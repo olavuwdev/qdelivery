@@ -42,6 +42,21 @@ class Usuarios
         $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
         return $ler->getResultado();
     }
+
+    private function enviaFoto(): void
+    {
+        if (isset($this->data['foto'])) {
+            $enviaFoto = new Uploads(SHEEP_IMG_USUARIOS);
+            $nomeFoto = Formata::Name($this->data['nome']) . '-' . Formata::Name($this->data['sobrenome']) . '-' . time() . '-' . Formata::Name(date('Y-m-d H:i'));
+            $enviaFoto->Image($this->data['foto'], $nomeFoto);
+            if ($enviaFoto->getResult()) {
+                $this->data['foto'] = $enviaFoto->getResult();
+            } else {
+                $this->data['foto'] = null;
+            }
+        }
+    }
+
     private function filtroBancoDeDados(): void
     {
         $foto = $this->data['foto'];
@@ -77,21 +92,9 @@ class Usuarios
             $this->data['senha'] = password_hash($this->data['senha'], PASSWORD_DEFAULT, ['const' => 10]);
         }
 
-        $this->data['senha'] = (string) $this->data['senha'];
+        #$this->data['senha'] = (string) $this->data['senha'];
     }
-    private function enviaFoto(): void
-    {
-        if (isset($this->data['foto'])) {
-            $enviaFoto = new Uploads(SHEEP_IMG_USUARIOS);
-            $nomeFoto = Formata::Name($this->data['nome']) . '-' . Formata::Name($this->data['sobrenome']) . '-' . time() . '-' . Formata::Name(date('Y-m-d H:i'));
-            $enviaFoto->Image($this->data['foto'], $nomeFoto);
-            if ($enviaFoto->getResult()) {
-                $this->data['foto'] = $enviaFoto->getResult();
-            } else {
-                $this->data['foto'] = null;
-            }
-        }
-    }
+
     private function cadastraUsuarioBd(): bool{
         $cadastrar = new Criar();
         $cadastrar->Criacao(self::BD, $this->data);

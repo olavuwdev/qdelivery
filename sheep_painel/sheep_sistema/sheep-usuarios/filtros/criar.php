@@ -11,7 +11,7 @@
         if(isset($criar['sendSheep'])){
             unset($criar['sendSheep']);
             
-            $criar['foto'] = $_FILES['files']['tmp_name'] ? $_FILES['foto'] : null;
+            $criar['foto'] = $_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null;
 
             if($criar['sheep_firewall'] != $_SESSION['_sheep_firewall']){
                 header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&erro=true&token=".$_SESSION['timeWT']);
