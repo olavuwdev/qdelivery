@@ -67,13 +67,13 @@ class Usuarios
         $this->data['tipo_cadastro'] = (string) $this->data['tipo_cadastro'];
         $this->data['foto'] = $foto;
 
-        if ($this->data['tipo_cadastrp'] == 'criar') {
+        if($this->data['tipo_cadastro'] == 'criar') {
             $this->data['data'] = date('Y-m-d H:i:s');
             $this->data['dia'] = date('d');
             $this->data['mes'] = date('m');
-            $this->data['ano'] = date('y');
+            $this->data['ano'] = date('Y');
         }
-        if (isset($this->data['data'])) {
+        if(isset($this->data['data'])) {
             $this->data['senha'] = password_hash($this->data['senha'], PASSWORD_DEFAULT, ['const' => 10]);
         }
 
@@ -82,7 +82,7 @@ class Usuarios
     private function enviaFoto(): void
     {
         if (isset($this->data['foto'])) {
-            $enviaFoto = new Uploads(SHEEP_IMG_PAINEL);
+            $enviaFoto = new Uploads(SHEEP_IMG_USUARIOS);
             $nomeFoto = Formata::Name($this->data['nome']) . '-' . Formata::Name($this->data['sobrenome']) . '-' . time() . '-' . Formata::Name(date('Y-m-d H:i'));
             $enviaFoto->Image($this->data['foto'], $nomeFoto);
             if ($enviaFoto->getResult()) {
@@ -92,12 +92,13 @@ class Usuarios
             }
         }
     }
-    private function cadastraUsuarioBd(): bool
-    {
+    private function cadastraUsuarioBd(): bool{
         $cadastrar = new Criar();
         $cadastrar->Criacao(self::BD, $this->data);
         if($cadastrar->getResultado()){
             return $this->resultado = true;
+        
         }
     }
 }
+?>

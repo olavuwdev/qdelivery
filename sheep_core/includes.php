@@ -34,7 +34,7 @@
 */
 
 //PASTA GERAL DE IMAGENS DE USUARIOS CAMINHO DO PAINEL A MODELOS######################
-define('SHEEP_IMG_USUARIOS', './fotos-usuarios/');
+define('SHEEP_IMG_USUARIOS', '../fotos-usuarios/');
 
 
 //PASTA GERAL DE IMAGENS E ARQUIVOS CAMINHO DO PAINEL A MODELOS######################

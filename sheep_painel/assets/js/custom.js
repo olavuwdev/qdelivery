@@ -19,6 +19,26 @@ jQuery(function($){
 /**
  * LOAD CIDADES
  */
+$(function(){
+    $('.load_estados').change(function(){
+
+        var estado = $('.load_estados');
+        var cidade = $('#load_cidades');
+        var caminho = ($("#caminho").lenght ? $("#caminho").attr('class') + '/cidades.php' : '../qd/cidades.php');
+
+        estado.attr('disable', 'true');
+        cidade.attr('disable', 'true');
+
+
+        cidade.html('<option value=""> Carregando cidades...</option>');
+
+        $.post(caminho, {estado: $(this).val()}, function(cidades){
+            cidade.html(cidades).removeAttr('disabled');
+            estado.removeAttr('disabled');            
+        });
+
+    });
+});
 
 
 /**
