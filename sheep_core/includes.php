@@ -192,6 +192,7 @@ define('SHEEP_TITULO_PAINEL', 'Painel de Controle Sheep PHP - MaykonSilveira.com
 // RODAPE TEXTO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
 define('SHEEP_RODAPE_PAINEL', '<a href="https://maykonsilveira.com.br/" title="EAD MaykonSilveira.com.br">Todos os Direitos Reservados a EAD MaykonSilveira.com.br SHEEP PHP</a>');
 
+define('RODAPE_PAINEL', '<a href="#" title="Olavo Adriel"> &copy; Copyright a Olavo Adriel </a>')
 
 
 /**

@@ -3,7 +3,7 @@
                   </div>
             </div>
             <div class="mt-5 text-muted text-center">
-            <?=SHEEP_RODAPE_PAINEL?>
+            <?=RODAPE_PAINEL?>
 
             </div>
           </div>

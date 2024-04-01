@@ -96,7 +96,7 @@
         
 <footer class="main-footer">
         <div class="footer-left">
-            Data <?= date('d/m/Y')?> - <?=SHEEP_RODAPE_PAINEL?> - <a href="" data-toggle="modal"
+            Data <?= date('d/m/Y')?> - <?=RODAPE_PAINEL?> - <a href="" data-toggle="modal"
                         data-target="#versaoSheep"> <?= SHEEP_VERSAO ?></a>
         </div>
         <div class="footer-right">

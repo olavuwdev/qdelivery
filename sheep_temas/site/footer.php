@@ -41,7 +41,7 @@
         </div>
         
         <div class="direitos">
-            Criado por <span> Olavo Adriel </span> | Todos os direitos reservados
+            <?= RODAPE_PAINEL ?>
         </div>
 </section>
 
