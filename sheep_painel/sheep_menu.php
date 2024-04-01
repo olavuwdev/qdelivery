@@ -3,11 +3,11 @@
 <div class="main-sidebar sidebar-style-2">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="sheep.php" title="Sheep Framework PHP - Por: MAYKONSILVEIRA.COM.BR "> <img alt="image" src="<?= SHEEP_LOGO ?>" class="header-logo" style="margin-top:5px; width:70%; height: auto;" /> <span class="logo-name"></span>
+      <a href="sheep.php" title="Quentinha Delivery "> <img alt="image" src="<?= QUENTINHA_LOGO ?>" class="header-logo" style="margin-top:5px; width:50%; height: auto;" /> <span class="logo-name"></span>
       </a>
     </div>
     <ul class="sidebar-menu">
-      <li class="menu-header">Sheep PHP</li>
+      <li class="menu-header">Quentinha Delivery</li>
       <li class="dropdown active">
         <a href="sheep.php" class="nav-link"><i data-feather="monitor"></i><span>Painel</span></a>
       </li>

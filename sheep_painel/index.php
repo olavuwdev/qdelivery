@@ -15,7 +15,7 @@ require_once('sheep_top_login.php');
 
               <div class="card-header">
                 <center>
-                  <img src="<?= SHEEP_LOGO ?>" alt="<?= SHEEP_TITULO_PAINEL ?>" class="img-fluid">
+                  <img src="<?= QUENTINHA_LOGO ?>" alt="<?= SHEEP_TITULO_PAINEL ?>" class="img-fluid">
                 </center>
 
               </div>

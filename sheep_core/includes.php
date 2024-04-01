@@ -185,7 +185,7 @@ define('SHEEP_ICONE', 'assets/img/logo/icone.png');
 
 // LOGO DO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
 define('SHEEP_LOGO', 'assets/img/logo/LOGO-SHEEP-PHP-MAYKON-SILVEIRA2.png');
-
+define('QUENTINHA_LOGO', 'assets/img/logo/moto.png');
 // TITULO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
 define('SHEEP_TITULO_PAINEL', 'Painel de Controle Sheep PHP - MaykonSilveira.com.br');
 
