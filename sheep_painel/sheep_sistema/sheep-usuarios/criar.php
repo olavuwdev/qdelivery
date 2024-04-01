@@ -18,9 +18,9 @@
         <!--FIM TOKEN E RETORNOS TOPO clientes SITE--->
 
 
-        <form action="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-usuario/filtros/criar&token=" . $_SESSION['timeWT']?>" method="post" enctype="multipart/form-data">
+        <form action="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/filtros/criar&token=" . $_SESSION['timeWT']?>" method="post" enctype="multipart/form-data">
 
-
+        <?= URL_CAMINHO_PAINEL . FILTROS . "/sheep-usuario/filtros/criar&token=" . $_SESSION['timeWT']?>
             <div class="section-body">
                 <div class="row">
                     <div class="col-12">
@@ -205,7 +205,7 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button type="submit" class="btn btn-lg btn-primary" name="sendSheep">Salvar</button>
+                                        <button type="submit" class="btn btn-lg btn-primary" name="sendSheep">AASalvar</button>
                                     </div>
                                 </div>
                             </div>  

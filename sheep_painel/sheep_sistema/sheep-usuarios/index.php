@@ -65,7 +65,7 @@
                         <tr>
                           <td><?=$cliente->id?></td>
                           <td>
-                            <a href="#" data-toggle="modal" data-target="#ver">
+                            <a href="#" data-toggle="modal" data-target="#ver<?=$cliente->id?>">
                               <?php if($cliente->foto){?>
                                 <img alt="" src="<?= SHEEP_IMG_USUARIOS . $cliente->foto?>" width="35">
                               <?php }else{?>
@@ -122,12 +122,23 @@
   </section>
  
       <!-- INICIO MODAL SUPORTE SITE--->
+          
+    <?php
+        $ler = new Ler();
+        $ler->Leitura('usuarios', "ORDER BY data DESC");
+        if($ler->getResultado()){
+          foreach($ler->getResultado() as $cliente){
+            $cliente = (object) $cliente;
+          
+      ?>
+                    
+
       <!-- basic modal -->
-      <div class="modal fade" id="ver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="ver<?=$cliente->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Maykon </h5>
+              <h5 class="modal-title" id="exampleModalLabel"><?=$cliente->nome ? $cliente->nome : null; ?> </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -135,18 +146,20 @@
             <div class="modal-body">
 
               <p>
+              <?php if($cliente->foto){?>
+                  <img alt="" src="<?= SHEEP_IMG_USUARIOS . $cliente->foto?>"  style="width:150px; height:auto; object-fit:cover;">
+                <?php }else{?>
                   <img alt="" src="assets/img/sem-imagem.png" style="width:150px; height:auto; object-fit:cover;">
+                <?php }?>
+                  
 
               </p>
-              <p>Criado(a): 77/77/7777</p>
-              <p>Nome: Maykon Silveira</p>
-              <p>CPF: 77777</p>
-              <p>CNPJ: 77777</p>
-              <p>RAZÃO SOCIAL: Maykon Silveira</p>
-              <p>Telefone: (41)7777-77777</p>
-              <p>Whats: (41)7777-77777</p>
-              <p>E-mail:  cursos@maykonsilveira.com.br</p>
-              <p>Função:  Cliente </p>
+              <p>Criado(a): <?= date('d/m/Y', strtotime($cliente->data))?></p>
+              <p>Nome: <?=$cliente->nome ? $cliente->nome : null; ?> <?=$cliente->sobrenome ? $cliente->sobrenome : null; ?></p>
+              <p>CPF: <?= $cliente->cpf ? $cliente->cpf : null ;?></p>
+              <p>Whats: <?= $cliente->whatsapp ? $cliente->whatsapp : null ?></p>
+              <p>E-mail:  <?= $cliente->email ? $cliente->email : null ?></p>
+              <p>Função:  <?php echo $cliente->nivel == 'M' ? 'Administrador' : 'Cliente' ; ?> </p>
 
             </div>
             <div class="modal-footer bg-whitesmoke br">
@@ -156,7 +169,7 @@
           </div>
         </div>
       </div>
-
+    <?php }} ?>
       <!-- FIM MODAL SUPORTE SITE--->
   
 
@@ -164,3 +177,9 @@
 
 
 </div>
+
+<?php
+$sheep = null;
+$ler = null;
+
+?>
