@@ -27,7 +27,7 @@
                 header("Location: ". URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&erro=true&token=".$_SESSION['timeWT']);
 
             }
-            dd($salvar->getResultado());
+            
         }
         
     ?>
