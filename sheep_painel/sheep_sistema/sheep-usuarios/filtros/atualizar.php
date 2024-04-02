@@ -14,7 +14,7 @@
             $atualizar['foto'] = $_FILES['foto']['tmp_name'] ? $_FILES['foto'] : null;
 
             if($atualizar['sheep_firewall'] != $_SESSION['_sheep_firewall']){
-                header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&erro=true&token{$_SESSION['timeWT']}")
+                header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&erro=true&token{$_SESSION['timeWT']}");
                 exit();
             }
 
