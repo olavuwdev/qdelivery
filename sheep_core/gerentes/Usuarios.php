@@ -26,6 +26,23 @@ class Usuarios
 
     private const BD = 'usuarios';
 
+    #Atualizar perfil do usuario
+    public function atualizaUsuario(int $id, array $data):bool{
+        $this->id = $id;
+        $this->data = $data;
+        if(empty($this->data['senha'])){
+            unset($this->data['senha']);
+        }else{
+            $this->data['senha'] = password_hash($this->data['senha'], PASSWORD_DEFAULT, ['const' => 10]);
+        }
+        if ($this->verificaExistenciaUp('email') || $this->verificaExistenciaUp('cpf')) {
+            return $this->resultado = false;
+            exit();
+        }
+        
+        $this->atualizaFoto();
+        return $this->vamosSalvarUsuario();
+    }
     public function getResultado(): bool
     {
         return $this->resultado;
@@ -42,6 +59,11 @@ class Usuarios
         $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
         return $ler->getResultado();
     }
+    private function verificaExistenciaUp($campo): bool{
+        $ler = new Ler();
+        $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
+        return $ler->getContaLinhas() > 1; 
+    }
 
     private function enviaFoto(): void
     {
@@ -54,6 +76,31 @@ class Usuarios
             } else {
                 $this->data['foto'] = null;
             }
+        }
+    }
+    private function atualizaFoto():void{
+        if(isset($this->data['foto'])){
+            $lerFoto = new Ler();
+            $lerFoto->Leitura(self::BD, "WHERE id = :id", "id={$this->id}");
+            $foto = SHEEP_IMG_USUARIOS . $lerFoto->getResultado()[0]['foto'];
+            #Apagando foto 
+            if(file_exists($foto) && !is_dir($foto)){
+                unlink($foto);
+            }
+            #Upando foto nova
+            $enviaFoto = new Uploads(SHEEP_IMG_USUARIOS);
+            $nomeFoto = Formata::Name($this->data['nome']) . '-' . Formata::Name($this->data['sobrenome']) . '-' . time() . '-' . Formata::Name(date('Y-m-d H:i'));
+            $enviaFoto->Image($this->data['foto'], $nomeFoto);
+
+        }
+        if(isset($enviaFoto) && $enviaFoto->getResult()){
+            if(isset($this->data['foto'])){
+                $this->data['foto'] = $enviaFoto->getResult();
+            }else{
+                unset($this->data['foto']);
+            }
+        }else{
+            unset($this->data['foto']);
         }
     }
 
@@ -103,5 +150,17 @@ class Usuarios
         
         }
     }
+
+private function vamosSalvarUsuario(): bool
+{
+    $atualizar = new Atualizar();
+    $atualizar->Atualizando(self::BD, $this->data, "WHERE id = :id", "id={$this->id}");
+    if($atualizar->getResultado()){
+        return $this->resultado = true;
+    }
+}
+
+
+
 }
 ?>

@@ -208,7 +208,7 @@ if($editar){
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Senha(Obrigatório)</label>
                                     <div class="col-md-7">
-                                        <input type="password" class="form-control" name="senha" placeholder="Senha" required="">
+                                        <input type="password" class="form-control" name="senha" placeholder="Senha">
                                     </div>
 
                                 </div>
