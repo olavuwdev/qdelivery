@@ -90,7 +90,7 @@ if($editar){
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">CPF(Obrigatório)</label>
                                     <div class="col-md-7">
-                                        <input type="text" id="cpfmj" class="form-control" name="cpf" placeholder="CPF" value="<?= $cliente->cpf ? $cliente->cpf : null ?>">
+                                        <input type="text" id="cpfmj" class="form-control" name="cpf" placeholder="CPF" required="" value="<?= $cliente->cpf ? $cliente->cpf : null ?>">
                                     </div>
 
                                 </div>
@@ -99,7 +99,7 @@ if($editar){
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">E-mail(Obrigatório)</label>
                                     <div class="col-md-7">
-                                        <input type="email" class="form-control" name="email" placeholder="E-mail" value="<?= $cliente->email ? $cliente->email : null ?>">
+                                        <input type="email" class="form-control" name="email" placeholder="E-mail" required="" value="<?= $cliente->email ? $cliente->email : null ?>">
                                     </div>
 
                                 </div>
@@ -223,7 +223,7 @@ if($editar){
                                     </div>
                                 </div>
 
-
+                              
                                 <input type="hidden" name="id" value="<?= $editar ?>">
                                 <input type="hidden" name="usuario" value="<?=$_SESSION['sheep_user']['id'] ?>">
                                 <input type="hidden" name="sheep_firewall" value="<?= $_SESSION['_sheep_firewall']?>">

@@ -77,14 +77,16 @@
             Tudo certo!
           </div>
         </div>
-        <!-- FIM ALERTA SUCESSO SITE--->
         <?php } ?>
+        <!-- FIM ALERTA SUCESSO SITE--->
+
+
+        <!-- INICIO ALERTA ERRO SITE--->
         <?php 
             $erroRetorno = filter_input(INPUT_GET, 'erro', FILTER_VALIDATE_BOOLEAN);
             if($erroRetorno){
         ?>
       
-        <!-- INICIO ALERTA ERRO SITE--->
         <div class="alert alert-danger alert-has-icon">
           <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
           <div class="alert-body">
@@ -92,7 +94,24 @@
             Ocorreu um erro!
           </div>
         </div>
-        <!-- FIM ALERTA ERRO SITE--->
         <?php } ?>   
+        <!-- FIM ALERTA ERRO SITE--->
+
+        <!-- INICIO ALERTA USUARIO DELETADO SITE--->
+        <?php 
+            $deleteRetorno = filter_input(INPUT_GET, 'delete', FILTER_VALIDATE_BOOLEAN);
+            if($deleteRetorno){
+        ?>
+      
+        <div class="alert alert-success alert-has-icon">
+          <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+          <div class="alert-body">
+            <div class="alert-title">Sucesso!</div>
+            Usuario excluido com sucesso!!
+          </div>
+        </div>
+        <?php } ?>   
+        <!-- FIM ALERTA USUARIO DELETADO SITE--->
+        
 <!-- FIM MENSAGEM DE RETORNO DO SITE SUCESSO E ERRO FORMULARIO SITE--->
      

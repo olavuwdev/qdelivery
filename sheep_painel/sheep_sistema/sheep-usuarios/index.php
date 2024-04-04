@@ -100,7 +100,7 @@
                           <td>
                             <form action="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/filtros/excluir&token=" .$_SESSION['timeWT'] ?>" method="post">
 
-                              <input type="hidden" name="lixeira" value="<?=$cliente->id?>">
+                              <input type="hidden" name="id" value="<?=$cliente->id?>">
                               <button type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </form>
                           </td>

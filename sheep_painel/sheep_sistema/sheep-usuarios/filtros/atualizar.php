@@ -27,7 +27,8 @@
                     $_SESSION['_sheep_firewall'] = hash('sha512', random_int(100, 5000));
                     header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&sucesso=true&token={$_SESSION['timeWT']}");
                 }else{
-                    header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&erro5=true&token={$_SESSION['timeWT']}");
+                    header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-usuarios/index&erro=true&token={$_SESSION['timeWT']}");
+                    var_dump($salvar->getResultado());
                 }
             }
         

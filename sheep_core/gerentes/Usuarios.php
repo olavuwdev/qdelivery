@@ -43,6 +43,17 @@ class Usuarios
         $this->atualizaFoto();
         return $this->vamosSalvarUsuario();
     }
+
+    public function excluirUsuario(int $id): bool
+    {
+        $this->id = $id;
+        if(!$this->id){
+            return $this->resultado = false;
+            exit();
+        }
+        $this->removerFoto();
+        return $this->removendoUsuarioBd();
+    }
     public function getResultado(): bool
     {
         return $this->resultado;
@@ -103,6 +114,16 @@ class Usuarios
             unset($this->data['foto']);
         }
     }
+    private function removerFoto():void
+    {
+        $lerFoto = new Ler();
+        $lerFoto->Leitura(self::BD, "WHERE id = :id", "id={$this->id}");
+        $foto = SHEEP_IMG_USUARIOS . $lerFoto->getResultado()[0]['foto'];
+        #Apagando foto 
+        if(file_exists($foto) && !is_dir($foto)){
+            unlink($foto);
+        }
+    }
 
     private function filtroBancoDeDados(): void
     {
@@ -156,6 +177,14 @@ private function vamosSalvarUsuario(): bool
     $atualizar = new Atualizar();
     $atualizar->Atualizando(self::BD, $this->data, "WHERE id = :id", "id={$this->id}");
     if($atualizar->getResultado()){
+        return $this->resultado = true;
+    }
+}
+private function removendoUsuarioBd(): bool
+{
+    $excluir = new Excluir();
+    $excluir->Remover(self::BD, "WHERE id = :id", "id={$this->id}");
+    if($excluir->getResultado()){
         return $this->resultado = true;
     }
 }

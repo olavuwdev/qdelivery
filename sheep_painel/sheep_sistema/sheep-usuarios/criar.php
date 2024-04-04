@@ -63,7 +63,7 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">CPF(Obrigatório)</label>
                                     <div class="col-md-7">
-                                        <input type="text" id="cpfmj" class="form-control" name="cpf" placeholder="CPF">
+                                        <input type="text" id="cpfmj" class="form-control" name="cpf" placeholder="CPF" required="">
                                     </div>
 
                                 </div>
@@ -204,7 +204,7 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button type="submit" class="btn btn-lg btn-primary" name="sendSheep">AASalvar</button>
+                                        <button type="submit" class="btn btn-lg btn-primary" name="sendSheep">Salvar</button>
                                     </div>
                                 </div>
                             </div>  
