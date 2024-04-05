@@ -1,4 +1,14 @@
-  
+ <?php 
+
+  $id = 88888;
+  $ler = new Ler();
+  $ler->Leitura('dados', "WHERE id = :id", "id={$id}");
+  if($ler->getResultado()){
+    foreach($ler->getResultado() as $dados);
+    $dados = (object) $dados;
+  }
+
+ ?>
    <!-- Main Content -->
    <div class="main-content">
 
@@ -21,7 +31,7 @@
 
 
 
-       <form action="" method="post" enctype="multipart/form-data">
+       <form action="<?= URL_CAMINHO_PAINEL . FILTROS?>/filtros/dados&token=<?=$_SESSION['timeWT']?>" method="post" enctype="multipart/form-data">
 
 
          <div class="section-body">
@@ -72,7 +82,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nome da Empresa(Obrigatório)</label>
                      <div class="col-md-7">
-                       <input type="text" class="form-control" name="nome" placeholder="Digite o nome da sua empresa" value="">
+                       <input type="text" class="form-control" name="nome" placeholder="Digite o nome da sua empresa" value="<?=$dados->nome ? $dados->nome : null?>">
                      </div>
 
                    </div>
@@ -80,7 +90,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Descrição da Empresa</label>
                      <div class="col-md-7">
-                       <textarea class="summernote" name="descricao"></textarea>
+                       <textarea class="summernote" name="descricao"><?=$dados->descricao ? htmlspecialchars($dados->descricao) : null?></textarea>
 
                      </div>
 
@@ -89,7 +99,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">CNPJ(Opcional)</label>
                      <div class="col-md-7">
-                       <input type="text" id="cnpj" class="form-control" name="cnpj" placeholder="Adicione o CNPJ" value="">
+                       <input type="text" id="cnpj" class="form-control" name="cnpj" placeholder="Adicione o CNPJ" value="<?=$dados->cnpj ? $dados->cnpj : null?>">
                      </div>
 
                    </div>
@@ -99,7 +109,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">E-mail(Obrigatório)</label>
                      <div class="col-md-7">
-                       <input type="email" class="form-control" name="email" placeholder="E-mail" value="">
+                       <input type="email" class="form-control" name="email" placeholder="E-mail" value="<?=$dados->email ? $dados->email : null?>">
                      </div>
 
                    </div>
@@ -107,7 +117,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Senha E-mail(Obrigatório)</label>
                      <div class="col-md-7">
-                       <input type="password" class="form-control" name="senha_email" placeholder="Senha do e-mail" value="">
+                       <input type="password" class="form-control" name="senha_email" placeholder="Senha do e-mail" value="<?=$dados->senha_email ? $dados->senha_email : null?>">
                      </div>
 
                    </div>
@@ -115,7 +125,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Telefone(Opcional)</label>
                      <div class="col-md-7">
-                       <input type="text" id="fone" class="form-control" name="fone" placeholder="Telefone" value="">
+                       <input type="text" id="fone" class="form-control" name="fone" placeholder="Telefone" value="<?=$dados->fone ? $dados->fone : null?>">
                      </div>
 
                    </div>
@@ -125,7 +135,7 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Whatsapp(Opcional)</label>
                      <div class="col-md-7">
-                       <input type="text" id="cel" class="form-control" name="whatsapp" placeholder="whatsapp" value="">
+                       <input type="text" id="cel" class="form-control" name="whatsapp" placeholder="whatsapp" value="<?=$dados->whatsapp ? $dados->whatsapp : null?>">
                      </div>
 
                    </div>
@@ -135,12 +145,12 @@
 
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Endereço</label>
                      <div class="col-md-4">
-                       <input type="text" class="form-control" name="endereco" value="">
+                       <input type="text" class="form-control" name="endereco" value="<?=$dados->endereco ? $dados->endereco : null?>">
                      </div>
 
 
                      <div class="col-md-3">
-                       <input type="number" class="form-control" name="numero" value="">
+                       <input type="number" class="form-control" name="numero" value="<?=$dados->numero ? $dados->numero : null?>">
                      </div>
 
                    </div>
@@ -148,40 +158,57 @@
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">CEP</label>
                      <div class="col-md-7">
-                       <input type="text" id="cepmj" class="form-control" name="cep" placeholder="Digite um CEP Válido!" value="">
+                       <input type="text" id="cepmj" class="form-control" name="cep" placeholder="Digite um CEP Válido!" value="<?=$dados->cep ? $dados->cep : null?>">
                      </div>
 
                    </div>
 
                    <div class="form-group row mb-4">
-                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Estado</label>
-                     <div class="col-sm-12 col-md-7">
-                       <select class="form-control select2 load_estados" name="estado">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Estado</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <select class="form-control select2 load_estados" name="estado">
 
-                      
-                         <option value="">Paraná</option>
-                        
+                                            <?php 
+                                                $sheep->Leitura('app_estados', "ORDER BY estado_nome ASC");
+                                                $estadosUsuario = Formata::Resultado($sheep);
+                                                if($estadosUsuario){
+                                                    foreach($sheep->getResultado() as $estado){
+                                                        $estado = (object) $estado;
+                                               
+                                            ?>
+                                            <option value="<?= $estado->estado_id ?>" <?= $dados->estado == $estado->estado_id ? 'selected' : null ?>><?= $estado->estado_nome ?></option>
+                                            <?php }} ?>
 
-                       </select>
-                     </div>
-                   </div>
 
-                   <div class="form-group row mb-4">
-                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cidade</label>
-                     <div class="col-sm-12 col-md-7">
-                       <select class="form-control select2" name="cidade" id="load_cidades">
-                       
-                         <option value="" ></option>
-                         
+                                        </select>
+                                    </div>
+                                </div>
 
-                       </select>
-                     </div>
-                   </div>
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cidade</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <select class="form-control select2" name="cidade" id="load_cidades">
 
-                   <input type="hidden" name="usuario" value="">
-                   <input type="hidden" name="sheep_firewall" value="">
-                   <input type="hidden" name="tipo" value="">
-                   <input type="hidden" name="id" value="">
+                                        <?php 
+                                                $sheep->Leitura('app_cidades', "ORDER BY cidade_nome ASC");
+                                                $cidadeUsuario = Formata::Resultado($sheep);
+                                                if($cidadeUsuario){
+                                                    foreach($sheep->getResultado() as $cidade){
+                                                        $cidade = (object) $cidade;
+                                               
+                                            ?>
+                                            <option value="<?= $cidade->cidade_id ?>" <?= $dados->cidade == $cidade->cidade_id ? 'selected' : null ?>><?= $cidade->cidade_nome ?></option>
+                                            <?php }} ?>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                   <input type="hidden" name="usuario" value="<?=$_SESSION['sheep_user']['id']?>">
+                   <input type="hidden" name="sheep_firewall" value="<?=$_SESSION['_sheep_firewall']?>">
+                   <input type="hidden" name="tipo" value="config">
+                   <input type="hidden" name="id" value="<?=$id?>">
 
                    <div class="form-group row mb-4">
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>

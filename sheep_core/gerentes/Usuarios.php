@@ -76,6 +76,13 @@ class Usuarios
         return $ler->getContaLinhas() > 1; 
     }
 
+    //Em construção, validar se o usuario tem permissão para excluir
+    private function verificaNivel($campo): bool{
+        $ler = new Ler();
+        $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
+        return $ler->getResultado(); 
+    }
+
     private function enviaFoto(): void
     {
         if (isset($this->data['foto'])) {

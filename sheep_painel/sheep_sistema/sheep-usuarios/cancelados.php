@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="sheep.php">Inicio</a></li>
       <li class="breadcrumb-item"><a href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-usuarios/criar&token=<?= $_SESSION['timeWT'];?>">Novo</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Listar</li>
+      <li class="breadcrumb-item active" aria-current="page">Cancelados</li>
     </ol>
 
   </nav>
@@ -30,7 +30,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Todos</h4>
+              <h4>Cancelados</h4>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -54,7 +54,7 @@
 
                   
                         <?php
-                          $sheep->Leitura('usuarios', "ORDER BY data DESC");
+                          $sheep->Leitura('usuarios', "WHERE status = 'N' ORDER BY data DESC");
                           $usuarios = Formata::Resultado($sheep);
                           if($usuarios){
                             foreach($sheep->getResultado() as $cliente){

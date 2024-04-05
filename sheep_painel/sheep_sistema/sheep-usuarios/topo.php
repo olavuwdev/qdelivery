@@ -41,25 +41,28 @@ if($clientes){
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="" style="margin-left:5px;"><span class="badge badge-primary"><i class="fas fa-print"></i> </span></a>
+            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-usuarios/imprimir&token=<?= $_SESSION['timeWT']?>" style="margin-left:5px;"><span class="badge badge-primary"><i class="fas fa-print"></i> </span></a>
           </li>
 
         </ul>
         <ul class="nav nav-pills">
 
           <li class="nav-item">
-            <a class="nav-link active" href="">Todos <span class="badge badge-white"><?= $contaTodos ?></span></a>
+            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-usuarios/index&token=<?= $_SESSION['timeWT']?>">Todos <span class="badge badge-white"><?= $contaTodos ?></span></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="">Ativos <span class="badge badge-primary"><?= $contaAtivo ?></span></a>
+            <a class="nav-link" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-usuarios/ativos&token=<?= $_SESSION['timeWT']?>">Ativos <span class="badge badge-primary"><?= $contaAtivo ?></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Cancelados <span class="badge badge-primary"><?=$contaCancelados?></span></a>
+            <a class="nav-link" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-usuarios/cancelados&token=<?= $_SESSION['timeWT']?>">Cancelados <span class="badge badge-primary"><?=$contaCancelados?></span></a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="">Ajuda? <span class="badge badge-primary"><i class="fa fa-exclamation-circle"></i> </span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="">Lixeira<span class="badge badge-primary"><i class="fa fa-trash"></i> </span></a>
           </li>
 
 

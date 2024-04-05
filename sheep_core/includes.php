@@ -35,6 +35,8 @@
 
 //PASTA GERAL DE IMAGENS DE USUARIOS CAMINHO DO PAINEL A MODELOS######################
 define('SHEEP_IMG_USUARIOS', '../fotos-usuarios/');
+//PASTA GERAL DE IMAGENS DE LOGOMARCAS DA EMPRESA ######################
+define('SHEEP_IMG_LOGOMARCA', '../img-logo/');
 
 
 //PASTA GERAL DE IMAGENS E ARQUIVOS CAMINHO DO PAINEL A MODELOS######################
@@ -187,7 +189,7 @@ define('SHEEP_ICONE', 'assets/img/logo/icone.png');
 define('SHEEP_LOGO', 'assets/img/logo/LOGO-SHEEP-PHP-MAYKON-SILVEIRA2.png');
 define('QUENTINHA_LOGO', 'assets/img/logo/moto.png');
 // TITULO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
-define('SHEEP_TITULO_PAINEL', 'Painel de Controle Sheep PHP - MaykonSilveira.com.br');
+define('SHEEP_TITULO_PAINEL', 'Quentinha Delivery - Administrativo');
 
 // RODAPE TEXTO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
 define('SHEEP_RODAPE_PAINEL', '<a href="https://maykonsilveira.com.br/" title="EAD MaykonSilveira.com.br">Todos os Direitos Reservados a EAD MaykonSilveira.com.br SHEEP PHP</a>');
