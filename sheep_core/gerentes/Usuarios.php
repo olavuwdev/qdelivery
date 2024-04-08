@@ -39,6 +39,7 @@ class Usuarios
             return $this->resultado = false;
             exit();
         }
+
         
         $this->atualizaFoto();
         return $this->vamosSalvarUsuario();
@@ -51,6 +52,12 @@ class Usuarios
             return $this->resultado = false;
             exit();
         }
+        /*
+        if ($this->verificaNivel('nivel')) {
+            return $this->resultado = false;
+            exit();
+        }
+        */
         $this->removerFoto();
         return $this->removendoUsuarioBd();
     }
@@ -79,8 +86,8 @@ class Usuarios
     //Em construção, validar se o usuario tem permissão para excluir
     private function verificaNivel($campo): bool{
         $ler = new Ler();
-        $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
-        return $ler->getResultado(); 
+        $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}",  "id = {$this->data['id']} and {$campo}= 'M'");
+        return $ler->getResultado() >= 1; 
     }
 
     private function enviaFoto(): void
