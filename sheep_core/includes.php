@@ -39,6 +39,7 @@ define('SHEEP_IMG_USUARIOS', '../fotos-usuarios/');
 define('SHEEP_IMG_LOGOMARCA', '../img-logo/');
 
 
+
 //PASTA GERAL DE IMAGENS E ARQUIVOS CAMINHO DO PAINEL A MODELOS######################
 define('SHEEP_IMG', './sheep-imagens/');
 //CAMINHO PASTA IMAGEM PARA TEMAS 

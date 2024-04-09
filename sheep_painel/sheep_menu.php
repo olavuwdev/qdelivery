@@ -17,6 +17,7 @@
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="cpu"></i><span>Configurações</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="<?= FILTROS ?>sheep-dados/index&token=<?=$_SESSION['timeWT']?>">Configurações</a></li>
+          <li><a class="nav-link" href="<?= FILTROS ?>sheep-efi/index&token=<?=$_SESSION['timeWT']?>">Banco EFI</a></li>
         
         </ul>
       </li>

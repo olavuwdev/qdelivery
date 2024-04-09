@@ -31,7 +31,7 @@
 
 
 
-       <form action="<?= URL_CAMINHO_PAINEL . FILTROS?>/filtros/dados&token=<?=$_SESSION['timeWT']?>" method="post" enctype="multipart/form-data">
+       <form action="<?= URL_CAMINHO_PAINEL . FILTROS?>sheep-dados/filtros/dados&token=<?=$_SESSION['timeWT']?>" method="post" enctype="multipart/form-data">
 
 
          <div class="section-body">
@@ -58,8 +58,12 @@
                      <div class="col-sm-12 col-md-7">
                        <div id="image-preview" class="image-preview">
                          <label for="image-upload" id="image-label">Buscar Imagem</label>
-
-                         <input type="file" name="logo" id="image-upload" />
+                          <?php if($dados->logo){?>
+                            <img src="<?= SHEEP_IMG_LOGOMARCA . $dados->logo ?>" alt="<?= $dados->nome?>" style="width:100%; height:auto;">
+                            <?php }else{?>
+                              <img src="assets/img/sem-imagem.png" style="width:100%; height:auto;">
+                              <?php } ?>
+                              <input type="file" name="logo" id="image-upload" />
                        </div>
                      </div>
                    </div>
@@ -70,10 +74,11 @@
                      <div class="col-sm-12 col-md-7">
                        <div id="image-preview" class="image-preview">
                          <label for="image-upload2" id="image-label">Favicon</label>
-
-                         
+                          <?php  if($dados->icone){ ?>
+                            <img src="<?= SHEEP_IMG_LOGOMARCA . $dados->icone ?>" alt="<?= $dados->nome ?>" style="width:100%; height:auto;">
+                          <?php }else{ ?>
                           <img src="assets/img/sem-imagem.png" style="width:100%; height:auto;">
-                         
+                         <?php }?>
                        </div>
                        <input type="file" name="icone" id="image-upload2" />
                      </div>
@@ -136,6 +141,14 @@
                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Whatsapp(Opcional)</label>
                      <div class="col-md-7">
                        <input type="text" id="cel" class="form-control" name="whatsapp" placeholder="whatsapp" value="<?=$dados->whatsapp ? $dados->whatsapp : null?>">
+                     </div>
+
+                   </div>
+
+                   <div class="form-group row mb-4">
+                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Valor da entrega(Obrigatório)</label>
+                     <div class="col-md-7">
+                       <input type="text" class="form-control" name="frete" placeholder="valor do frete" value="<?=$dados->frete ? $dados->frete : 0?>">
                      </div>
 
                    </div>
