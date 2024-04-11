@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01/04/2024 às 02:13
+-- Tempo de geração: 11/04/2024 às 03:30
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -5657,6 +5657,82 @@ INSERT INTO `app_estados` (`estado_id`, `estado_nome`, `estado_uf`, `estado_regi
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `banco_efi`
+--
+
+CREATE TABLE `banco_efi` (
+  `id` int(11) NOT NULL,
+  `chave_1` varchar(255) NOT NULL,
+  `chave_2` varchar(255) NOT NULL,
+  `status` varchar(40) NOT NULL,
+  `usuario` int(1) NOT NULL,
+  `ultima_atualizacao` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `banco_efi`
+--
+
+INSERT INTO `banco_efi` (`id`, `chave_1`, `chave_2`, `status`, `usuario`, `ultima_atualizacao`) VALUES
+(73214, 'chave1', 'chave2', 'false', 1, '2024-04-09 20:21:33');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `dados`
+--
+
+CREATE TABLE `dados` (
+  `id` int(11) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `icone` varchar(255) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `frete` decimal(10,2) NOT NULL,
+  `cnpj` varchar(100) NOT NULL,
+  `descricao` longtext NOT NULL,
+  `fone` varchar(70) DEFAULT NULL,
+  `whatsapp` varchar(70) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `numero` int(11) DEFAULT NULL,
+  `estado` int(11) NOT NULL,
+  `cidade` int(11) NOT NULL,
+  `cep` varchar(100) NOT NULL,
+  `senha_email` varchar(255) NOT NULL,
+  `usuario` int(11) NOT NULL,
+  `ultima_atualizacao` datetime NOT NULL DEFAULT current_timestamp(),
+  `tipo` varchar(70) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `dados`
+--
+
+INSERT INTO `dados` (`id`, `logo`, `icone`, `nome`, `frete`, `cnpj`, `descricao`, `fone`, `whatsapp`, `email`, `endereco`, `numero`, `estado`, `cidade`, `cep`, `senha_email`, `usuario`, `ultima_atualizacao`, `tipo`) VALUES
+(88888, 'images/2024/04/quentinhadelivery-logo-23-15-18-1712628918.jpg', 'images/2024/04/quentinhadelivery-icone-23-15-1712628918.jpg', 'QuentinhaDelivery', 10.00, '15.124.512/1212-12', 'descricao', '(84)8888-8888', '(84)98888-8888', 'quentinha@delivery.com', 'rua joao', 88, 1, 2, '59.626-180', '123', 1, '2024-04-04 20:51:22', 'config');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `redes_sociais`
+--
+
+CREATE TABLE `redes_sociais` (
+  `id` int(11) NOT NULL,
+  `icone` varchar(255) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `tipo` varchar(70) NOT NULL,
+  `tipo_cadastro` varchar(50) DEFAULT NULL,
+  `data` datetime NOT NULL,
+  `dia` varchar(2) DEFAULT NULL,
+  `mes` varchar(2) DEFAULT NULL,
+  `ano` varchar(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `usuarios`
 --
 
@@ -5692,8 +5768,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `foto`, `nome`, `sobrenome`, `cpf`, `email`, `nascimento`, `senha`, `whatsapp`, `endereco`, `numero`, `cep`, `estado`, `cidade`, `status`, `nivel`, `data`, `dia`, `mes`, `ano`, `usuario`, `tipo`, `tipo_cadastro`, `ultima_atualizacao`) VALUES
-(1, NULL, 'Olavo Adriel', 'Adriel', '12345', 'ollavoadriel@gmail.com', NULL, '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '1234', 'Rua jesus te ama', 77, '77777', 1, 1, 'S', 'M', '2024-03-21 02:24:35', '20', '03', '2030', 0, 'usuario', 'criar', '2024-03-20 22:24:35'),
-(2, NULL, 'Olavo Teste', 'Lima', '12345', 'teste@gmail.com', NULL, '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '1234', 'Rua jesus te ama', 77, '77777', 1, 1, 'E', 'C', '2024-03-21 02:24:35', '20', '03', '2030', 0, 'usuario', 'criar', '2024-03-20 22:24:35');
+(1, 'images/2024/04/olavo-adriel-adriel-1712183684-2024-04-03-19-34.jpeg', 'Olavo Adriel', 'Adriel', '777.777.777-22', 'ollavoadriel@gmail.com', '2003-02-12', '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '', 'Rua jesus te ama', 77, '15.121-245', 1, 1, 'S', 'M', '2024-03-21 02:24:35', '20', '03', '2030', 1, 'usuarios', 'atualizar', '2024-03-20 22:24:35'),
+(2, 'images/2024/04/olavo-teste-lima-1712109744-2024-04-02-23-02.jpeg', 'Olavo Teste', 'Lima', '777.777.777-77', 'teste@gmail.com', '0000-00-00', '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '', 'Rua jesus te ama', 77, '', 1, 1, 'S', 'C', '2024-03-21 02:24:35', '20', '03', '2030', 1, 'usuarios', 'atualizar', '2024-03-20 22:24:35'),
+(3, 'images/2024/04/senku-shin-1712109514-2024-04-02-22-58.jpeg', 'Senku', 'Shin', '542.450.454-01', 'senku@gmail.com', '2004-12-12', '$2y$10$mWFluBo.e9Dtl0W2PdPBv.z2bnRN1knM0nDvYZApmjfp96hhsQW6u', '(54)54554-5454', 'rua joao', 231, '77.777-777', 20, 3196, 'N', 'C', '2024-03-31 22:19:42', '31', '03', '2024', 1, 'usuarios', 'atualizar', '2024-03-31 22:19:43');
 
 --
 -- Índices para tabelas despejadas
@@ -5711,6 +5788,24 @@ ALTER TABLE `app_cidades`
 --
 ALTER TABLE `app_estados`
   ADD PRIMARY KEY (`estado_id`);
+
+--
+-- Índices de tabela `banco_efi`
+--
+ALTER TABLE `banco_efi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `dados`
+--
+ALTER TABLE `dados`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `redes_sociais`
+--
+ALTER TABLE `redes_sociais`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `usuarios`
@@ -5735,10 +5830,28 @@ ALTER TABLE `app_estados`
   MODIFY `estado_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
+-- AUTO_INCREMENT de tabela `banco_efi`
+--
+ALTER TABLE `banco_efi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73215;
+
+--
+-- AUTO_INCREMENT de tabela `dados`
+--
+ALTER TABLE `dados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88889;
+
+--
+-- AUTO_INCREMENT de tabela `redes_sociais`
+--
+ALTER TABLE `redes_sociais`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

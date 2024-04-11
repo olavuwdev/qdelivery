@@ -1,6 +1,11 @@
 <?php 
-
-
+$editar = '73214';
+$sheep->Leitura('banco_efi', "WHERE id = :id", "id={$editar}");
+$bancoDigital = Formata::Resultado($sheep);
+if($bancoDigital){
+  foreach ($sheep->getResultado() as $banco);
+  $banco = (object) $banco;
+}
 
 ?>
  <!-- Main Content -->
@@ -53,14 +58,14 @@
                  <div class="form-group row mb-4">
                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Chave 1(Obrigatório)</label>
                    <div class="col-md-7">
-                     <input type="text" class="form-control" name="chave_1" placeholder="Cole aqui a chave" value="">
+                     <input type="text" class="form-control" name="chave_1" placeholder="Cole aqui a chave" value="<?= $banco->chave_1 ? $banco->chave_1 : null ?>">
                    </div>
 
                  </div>
                  <div class="form-group row mb-4">
                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Chave 2(Obrigatório)</label>
                    <div class="col-md-7">
-                     <input type="text" class="form-control" name="chave_2" placeholder="Cole aqui a chave" value="">
+                     <input type="text" class="form-control" name="chave_2" placeholder="Cole aqui a chave" value="<?= $banco->chave_2 ? $banco->chave_2 : null ?>">
                    </div>
 
                  </div>
@@ -70,11 +75,11 @@
                  <div class="form-group row mb-4">
                                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                                   <div class="col-sm-12 col-md-7">
-                                      <select class="form-control select2 load_estados" name="estado">
+                                      <select class="form-control select2 load_estados" name="status">
 
  
-                                          <option value="false">Ativos</option>
-                                          <option value="true">Homologação</option>
+                                          <option value="false" <?= $banco->status == 'false' ? 'selected' : null ?> >Ativo</option>
+                                          <option value="true" <?= $banco->status == 'true' ? 'selected' : null ?>>Homologação</option>
                                           
 
                                       </select>
@@ -85,8 +90,7 @@
 
                  <input type="hidden" name="usuario" value="<?=$_SESSION['sheep_user']['id']?>">
                  <input type="hidden" name="sheep_firewall" value="<?=$_SESSION['_sheep_firewall']?>">
-                 <input type="hidden" name="tipo" value="config">
-                 <input type="hidden" name="id" value="<?=$id?>">
+                 <input type="hidden" name="id" value="<?=$editar?>">
 
                  <div class="form-group row mb-4">
                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
