@@ -161,7 +161,7 @@ if( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ) {
     
     // DEFINE A URL DO SITE por Maykon Silveira ####################
     define('HOME', $https. SHEEP_URL); 	
-    define('PASTA_DO_PAINEL', '/sheep_painel/'); 	
+    define('PASTA_DO_PAINEL', 'sheep_painel/'); 	
     define('PASTA_DO_PAINEL_CLIENTE', '/cliente/'); 	
     define('URL_CAMINHO_PAINEL', HOME.'/'.PASTA_DO_PAINEL); 	
     define('URL_CAMINHO_PAINEL_CLIENTE', HOME.'/'.PASTA_DO_PAINEL_CLIENTE); 	
