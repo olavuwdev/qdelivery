@@ -163,13 +163,22 @@
                                         </thead>
                                         <tbody>
 
-                                            
+                                            <?php
+                                                $redes_sociais = new Ler();
+                                                $redes_sociais->Leitura('redes_sociais', 'ORDER BY data DESC');
+                                                $redes_formata = Formata::Resultado($redes_sociais);
+                                                if($redes_formata){
+                                                    foreach ($redes_sociais->getResultado() as $redes ){
+                                                    $redes = (object) $redes;
+
+                                                
+                                            ?>
 
                                             <tr>
-                                                <td>7</td>
-                                                <td>77/77/7777</td>
-                                                <td><i class="fa fa-facebook" style="font-size: 22px;"></i></td>
-                                                <td><a href="" title="">Facebook</a> </td>
+                                                <td><?= $redes->id ?></td>
+                                                <td><?= date('d/m/Y', strtotime($redes->data)) ?></td>
+                                                <td><i class="<?= $redes->icone?>" style="font-size: 30px;"></i></td>
+                                                <td><a href="<?= $redes->link?>" title=""><?= $redes->nome?></a> </td>
 
                                                 <td><a href="" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
                                                 <td>
@@ -179,6 +188,11 @@
                                                     </form>
                                                 </td>
                                             </tr>
+
+                                            <?php
+                                                }
+                                            }
+                                            ?>
 
                                            
 
