@@ -20,6 +20,34 @@ class Redes{
         return $this->salvarNoBanco();
         
     }
+
+    //Atualizar informações das redes sociais
+    public function atualizaRedes(int $id, array $data): bool
+    {
+        $this->id = $id;
+        $this->data = $data;
+        if($this->verificaCampos($this->data)){
+            return $this->resultado = false;
+            exit();
+        }
+
+        $this->filtroBanco();
+        return $this->atualizaRedesSociais();
+    }
+
+    //Exlusão da rede social
+    public function excluirRedes(int $id):bool
+    {
+        $this->id  = $id;
+        
+        if(!$this->id){
+            return $this->resultado = false;
+            exit();
+        }
+
+        return $this->removerDoBanco();
+    }
+
     public function getResultado():bool{
         return $this->resultado;
     }
@@ -57,6 +85,26 @@ class Redes{
         $salvar->Criacao(self::BD, $this->data);
         if($salvar->getResultado()){
             return $this->resultado = true;
+        }
+    }
+
+    //Salvando informações editadas(classe Atualizar) no BD.
+    private function atualizaRedesSociais():bool
+    {
+        $atualiza = new Atualizar();
+        $atualiza->Atualizando(self::BD, $this->data,  "WHERE id = :id", "id={$this->id}");
+        if($atualiza->getResultado()){
+            return $this->resultado = true;
+        }
+        
+    }
+    private function removerDoBanco():bool
+    {
+        $excluir = new Excluir();
+        $excluir->Remover(self::BD, "WHERE id = :id", "id={$this->id}");
+        if($excluir->getResultado()){
+            return $this->resultado = true;
+
         }
     }
 

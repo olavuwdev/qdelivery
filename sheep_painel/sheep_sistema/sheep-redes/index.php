@@ -10,7 +10,14 @@
             </ol>
         </nav>
         <!-- FIM NAVEGAÇÃO MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
+        <?php
 
+        $editar = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT);
+        if(!$editar){
+
+        
+
+        ?>
 
         <!-- INICIO FORMULARIO CRIAÇÃO MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
         <section class="section">
@@ -73,7 +80,16 @@
             </form>
         </section>
         <!-- FIM FORMULARIO CRIAÇÃO MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
+        <?php }
+        else{
+            $ler = new Ler();
+            $ler->Leitura('redes_sociais', "WHERE id = :id", "id={$editar}");
+            if($ler->getResultado()){
+                foreach($ler->getResultado() as $upRedes);
+                $upRedes = (object) $upRedes;
+            }
 
+        ?>
 
         
         <!-- INICIO FORMULARIO ATUALIZAÇÃO MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
@@ -86,12 +102,13 @@
                             <div class="card">
 
                                 <div class="card-footer text-right">
+                                    <a href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-redes/index&token=<?= $_SESSION['timeWT'] ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Novo </a>
                                     <a href="" class="btn btn-primary" data-toggle="modal" data-target=".ajuda"><i class="fa fa-exclamation-circle"></i> Ajuda </a>
                                 </div>
 
 
                                 <div class="card-header">
-                                    <h4>Atualizar</h4>
+                                    <h4>Editar</h4>
                                 </div>
                                 <div class="card-body">
 
@@ -101,10 +118,10 @@
                                             <a href="" title="Veja os ícones" data-toggle="modal" data-target="#icones"><i class="fa fa-question-circle"></i></a>
                                         </label>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" name="icone" placeholder="Icone" value="" style="border: 1px solid red;">
+                                            <input type="text" class="form-control" name="icone" placeholder="icone" value="<?=$upRedes->icone ? $upRedes->icone : null ?>" style="border: 1px solid red;">
                                         </div>
                                         <div class="col-md-3">
-                                            <input type="text" class="form-control" name="nome" placeholder="Nome" value="" style="border: 1px solid red;">
+                                            <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?=$upRedes->nome ? $upRedes->nome : null ?>" style="border: 1px solid red;">
                                         </div>
 
                                     </div>
@@ -112,10 +129,10 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link(Obrigatório)</label>
                                         <div class="col-md-7">
-                                            <input type="url" class="form-control" name="link" placeholder="Link" value="" style="border: 1px solid red;">
+                                            <input type="url" class="form-control" name="link" placeholder="Link" value="<?=$upRedes->link ? $upRedes->link : null ?>" style="border: 1px solid red;">
                                         </div>
 
-                                        <input type="hidden" name="id" value="">
+                                        <input type="hidden" name="id" value="<?= $editar ?>">
                                         <input type="hidden" name="tipo" value="redesSociais">
                                         <input type="hidden" name="tipo_cadastro" value="atualizar">
                                         <input type="hidden" name="sheep_firewall" value="<?= $_SESSION['_sheep_firewall'] ?>">
@@ -135,7 +152,8 @@
             </form>
         </section>
         <!-- FIM FORMULARIO ATUALIZAÇÃO MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
-       
+       <?php } 
+       ?>
         <!-- INICIO LISTAGEM MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
         <section class="section">
             <div class="section-body">
@@ -180,11 +198,11 @@
                                                 <td><i class="<?= $redes->icone?>" style="font-size: 30px;"></i></td>
                                                 <td><a href="<?= $redes->link?>" title=""><?= $redes->nome?></a> </td>
 
-                                                <td><a href="" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
+                                                <td><a href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-redes/index&editar=<?= $redes->id ?>&token=<?= $_SESSION['timeWT']?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
                                                 <td>
                                                     <form action="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-redes/filtros/excluir&token=<?= $_SESSION['timeWT'] ?>" method="post">
-                                                        <input type="hidden" name="id" value="7">
-                                                        <button type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                        <input type="hidden" name="id" value="<?= $redes->id?>">
+                                                        <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Deseja realmente excluir?')" ><i class="fas fa-trash-alt"></i></button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -228,7 +246,7 @@
                 <div class="modal-body">
 
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ffuF8-Nebuw?rel=0" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="teste.com" allowfullscreen></iframe>
                     </div>
 
 
@@ -621,7 +639,7 @@
                 <div class="modal-body">
 
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ffuF8-Nebuw?rel=0" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ffuF8?rel=0" allowfullscreen></iframe>
                     </div>
 
 
