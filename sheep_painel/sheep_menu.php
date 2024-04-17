@@ -23,6 +23,17 @@
         </ul>
       </li>
 
+
+      <li class="menu-header">Slides e Banners</li>
+      <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="award"></i><span>Publicidade</span></a>
+        <ul class="dropdown-menu">
+          <li><a  href="<?= FILTROS ?>sheep-slide/index&token=<?= $_SESSION['timeWT']?>">Slide</a></li>
+          <li><a  href="<?= FILTROS ?>sheep-banners/index&token=<?= $_SESSION['timeWT']?>"> Banners</a></li>
+        
+        </ul>
+      </li>
+
       <li class="menu-header">Clientes e Usuários</li>
       <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="trending-up"></i><span>Usuarios</span></a>

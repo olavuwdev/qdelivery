@@ -37,6 +37,8 @@
 define('SHEEP_IMG_USUARIOS', '../fotos-usuarios/');
 //PASTA GERAL DE IMAGENS DE LOGOMARCAS DA EMPRESA ######################
 define('SHEEP_IMG_LOGOMARCA', '../img-logo/');
+//CAMINHO PASTA SLIDES DO SITE 
+define('SHEEP_IMG_SLIDE', '../img-slides/');
 
 
 
@@ -46,6 +48,7 @@ define('SHEEP_IMG', './sheep-imagens/');
 define('SHEEP_IMG_URL', '/sheep_painel/sheep-imagens/');
 
 define('SHEEP_IMG_LOGO', '../../../sheep_temas/sheep-imagens-logo/');
+
 
 //IMAGENS PARA O LAYUT EXTERNO GERAL DE IMAGENS E ARQUIVOS CAMINHO DO PAINEL A MODELOS######################
 define('SHEEP_IMG_PAINEL', './sheep_temas/sheep-imagens/');
