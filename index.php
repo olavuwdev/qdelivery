@@ -34,7 +34,7 @@ require('./sheep_core/config.php');
 <!--INICIO CSS SLIDE MAYKONSILVEIRA.COM.BR-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="<?= CAMINHO_TEMAS?>/assets/css/style.css">
-<link rel="shortcut icon" href="<?= CAMINHO_TEMAS?>/assets/img/QDicon.jpg" type="image/x-icon">
+<link rel="shortcut icon" href="<?= CAMINHO_TEMAS?>/site/assets/img/QDicon.jpg" type="image/x-icon">
 <title>Quentinha Delivery</title>
 
  <?php
