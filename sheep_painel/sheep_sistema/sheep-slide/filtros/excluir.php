@@ -8,7 +8,7 @@
 //proteção para formulario com sessão de login
 require_once('sheep-filtros/valida.php');
 
-<<<<<<< HEAD
+
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
 if(isset($id)){
@@ -21,8 +21,7 @@ if(isset($id)){
 
     }
 }
-=======
->>>>>>> d5e2566c4ca863caefac3628a21b82f6c7d5381e
+
 
 ?>
 

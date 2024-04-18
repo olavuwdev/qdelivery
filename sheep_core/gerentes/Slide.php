@@ -22,7 +22,7 @@ class Slide{
         return $this->salvarNoBanco();
 
     }
-<<<<<<< HEAD
+
 
     public function atualizaSlide(int $id, array $data):bool
     {
@@ -49,8 +49,7 @@ class Slide{
         return $this->removeSlideBanco();
 
     }
-=======
->>>>>>> d5e2566c4ca863caefac3628a21b82f6c7d5381e
+
     public function getResultado():bool
     {
         return $this->resultado;
@@ -70,7 +69,7 @@ class Slide{
             }
         }
     }
-<<<<<<< HEAD
+
 
     private function atualizaCapa():void
     {
@@ -110,8 +109,7 @@ class Slide{
 
         }
     }
-=======
->>>>>>> d5e2566c4ca863caefac3628a21b82f6c7d5381e
+
     private function filtroBanco():void
     {
         $capa = $this->data['capa'];
@@ -162,7 +160,7 @@ class Slide{
         }
     }
 
-<<<<<<< HEAD
+
     private function atualizaNoBanco():bool
     {
         $atualizar = new Atualizar();
@@ -181,8 +179,7 @@ class Slide{
         }
     }
 
-=======
->>>>>>> d5e2566c4ca863caefac3628a21b82f6c7d5381e
+
 
 
 }
