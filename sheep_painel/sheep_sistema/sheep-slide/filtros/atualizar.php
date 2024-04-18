@@ -8,6 +8,7 @@
 //proteção para formulario com sessão de login
 require_once('sheep-filtros/valida.php');
 
+<<<<<<< HEAD
 $atualizar = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 if(isset($atualizar['sendSheep'])){
     unset($atualizar['sendSheep']);
@@ -30,6 +31,8 @@ if(isset($atualizar['sendSheep'])){
 
 }
 
+=======
+>>>>>>> d5e2566c4ca863caefac3628a21b82f6c7d5381e
 
 ?>
 

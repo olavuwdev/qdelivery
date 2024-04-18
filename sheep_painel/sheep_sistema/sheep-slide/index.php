@@ -72,7 +72,11 @@
                           <td><a href="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-slide/atualizar&editar={$slide->id}&token=" . $_SESSION['timeWT']?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
                           <td>
                             <form action="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-slide/filtros/excluir&token=" . $_SESSION['timeWT']?>" method="post">
+<<<<<<< HEAD
                               <input type="hidden" name="id" value="<?= $slide->id ?>">
+=======
+                              <input type="hidden" name="id" value="7">
+>>>>>>> d5e2566c4ca863caefac3628a21b82f6c7d5381e
                               <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Você deseja realmente apagar?')" ><i class="fas fa-trash-alt"></i></button>
                             </form>
                           </td>
