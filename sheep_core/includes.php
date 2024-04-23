@@ -39,6 +39,8 @@ define('SHEEP_IMG_USUARIOS', '../fotos-usuarios/');
 define('SHEEP_IMG_LOGOMARCA', '../img-logo/');
 //CAMINHO PASTA SLIDES DO SITE 
 define('SHEEP_IMG_SLIDE', '../img-slides/');
+//CAMINHO PASTA BANNERS DO SITE 
+define('SHEEP_IMG_BANNERS', '../img-banners/');
 
 
 
