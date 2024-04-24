@@ -1,6 +1,14 @@
  <?php 
 
+$editar = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT);
+$sheep->Leitura('banners', "WHERE id = :id", "id={$editar}");
+$bannerDestaque = Formata::Resultado($sheep);
+if($bannerDestaque){
+  foreach($sheep->getResultado() as $banner);
+    $banner = (object) $banner;
+}
 
+?>
 ?>
     <!-- Main Content -->
     <div class="main-content">
@@ -47,7 +55,12 @@
                       <div class="col-sm-12 col-md-7">
                         <div id="image-preview" class="image-preview">
                           <label for="image-upload" id="image-label">Buscar Imagem</label>
-                           
+                          <?php
+                            if($banner->capa){ ?>
+                              <img src="<?= SHEEP_IMG_BANNERS . $banner->capa ?>" style="width:100%" alt="<?= $banner->titulo ? $banner->titulo : null; ?>">
+                            <?php } ?>
+
+                          
                           <input type="file" name="capa" id="image-upload" />
                         </div>
                       </div>
@@ -57,7 +70,7 @@
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Título(Obrigatório)</label>
                       
                       <div class="col-md-7">
-                        <input type="text" class="form-control" name="titulo" placeholder="Digite o título" value="">
+                        <input type="text" class="form-control" name="titulo" placeholder="Digite o título" value="<?=$banner->titulo?>">
                       </div>
                     </div>
 
@@ -65,12 +78,11 @@
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Link(Obrigatório)</label>
                       
                       <div class="col-md-7">
-                     <input type="url" class="form-control" name="link" placeholder="Cole o link URL completa" value="">
+                     <input type="url" class="form-control" name="link" placeholder="Cole o link URL completa" value="<?=$banner->link?>">
                       </div>
                     </div>
 
-                    <input type="hidden" name="id" value="7">
-                    <input type="hidden" name="local" value="BannerHome550x604">
+                    <input type="hidden" name="id" value="<?= $banner->id ?>">
                     <input type="hidden" name="sheep_firewall" value="<?= $_SESSION['_sheep_firewall'] ?>">
                     <input type="hidden" name="tipo" value="banner">
                     <input type="hidden" name="tipo_cadastro" value="atualizar">

@@ -27,6 +27,8 @@ class Banners
     }
 
 
+
+
     //FUNÇOES PRIVADAS DA CLASSE
 
     private function verificaCampos(array $data):bool

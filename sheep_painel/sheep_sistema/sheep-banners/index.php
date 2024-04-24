@@ -40,7 +40,6 @@
                       <th>Foto</th>
                       <th>Criado</th>
                       <th>Titulo</th>
-                      <th>Local</th>
                       <th>Editar</th>
                       <th>Excluir</th>
 
@@ -48,32 +47,40 @@
                   </thead>
                   <tbody>
 
+                      <?php 
+                      //FOREACH para a leitura dos banners
+                          $sheep->Leitura('banners', "ORDER BY data DESC");
+                          $bannersDestaque = Formata::Resultado($sheep);
+                          if($bannersDestaque){
+                            foreach($sheep->getResultado() as $banner){
+                              $banner = (object) $banner;
+                              
+                      ?>
 
                     <?php
-                      
-                    
-
                     ?>
                         <tr>
-                          <td>7</td>
+                          <td><?=$banner->id?></td>
                           <td>
-                           
-                               <img alt="" src="assets/img/sem-imagem.png" width="35">
+                              <?php if($banner->capa){ ?>
+                               <img alt="<?=$banner->titulo?>" src="<?= SHEEP_IMG_BANNERS . $banner->capa ?>" width="35">
+                               <?php }else{ ?>
+                                <img alt="" src="assets/img/sem-imagem.png" width="35">
+                                <?php } ?> 
                              
                           </td>
-                          <td>77/77/7777</td>
-                          <td>Titulo</td>
-                          <td>Local</td>
-                          <td><a href="" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
+                          <td><?= date('d/m/Y', strtotime($banner->data)) ?></td>
+                          <td><?= $banner->titulo?></td>
+                          <td><a href="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-banners/atualizar&editar={$banner->id}&token={$_SESSION['timeWT']}" ?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
                           <td>
                             <form action="<?= URL_CAMINHO_PAINEL . FILTROS . 'sheep-banners/filtros/excluir&token=' . $_SESSION['timeWT']?>" method="post">
-                              <input type="hidden" name="id" value="">
+                              <input type="hidden" name="id" value="<?= $banner->id?>">
                               <button type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </form>
                           </td>
                         </tr>
 
-                    <?php  ?>
+                    <?php }} ?>
 
                   </tbody>
                 </table>
