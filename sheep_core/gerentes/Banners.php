@@ -25,7 +25,16 @@ class Banners
     {
         return $this->resultado;
     }
+    public function atualizaBanners(int $id, array $data):bool
+    {
+        $this->id = $id; 
+        $this->data = $data;
 
+        $this->filtroBanco();
+        $this->atualizaCapa();
+        return $this->atualizaNoBanco();
+
+    }
 
 
 
@@ -75,6 +84,41 @@ class Banners
         $criar = new Criar();
         $criar->Criacao(self::BD, $this->data);
         if($criar->getResultado()){
+            return $this->resultado = true;
+        }
+         
+    }
+
+    private function atualizaBanners():void
+    {
+        if(isset($this->data['capa'])){
+            $lerCapa = new Ler();
+            $lerCapa->Leitura(self::BD, "WHERE id = :id", "id = {$this->id}");
+            if($lerCapa->getResultado()){
+                $capaBanner = SHEEP_IMG_BANNERS . $lerCapa->getResultado()[0]['capa'];
+
+                if(file_exists($capaBanner) && !is_dir($capaBanner)){
+                    unlink($capaBanner);
+                }
+                $enviaCapa = new Uploads(SHEEP_IMG_BANNERS);
+                $urlCapa = Formata::name(date('Y-m-d')) . '-banner-' . Formata::name(date('H:m')) . '-qd-' . time();
+                $enviaCapa->Image($this->data['capa'], $urlCapa);
+            }
+        }
+
+        if(isset($enviaCapa) && $enviaCapa->getResult()){
+            $this->data['capa'] = $enviaCapa->getResult();
+        }else{
+            unset($this->data['capa']);
+        }
+
+    }
+
+    private function atualizaNoBanco():bool
+    {
+        $atualizar = new Atualizar();
+        $atualizar->Atualizando(self::BD, $this->data , "WHERE id = :id", "id={$this->id}");
+        if($atualizar->getResultado()){
             return $this->resultado = true;
         }
     }
