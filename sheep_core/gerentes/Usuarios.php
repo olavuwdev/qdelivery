@@ -80,7 +80,7 @@ class Usuarios
     private function verificaExistenciaUp($campo): bool{
         $ler = new Ler();
         $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
-        return $ler->getContaLinhas() > 1; 
+        return $ler->getContaLinhas() > 0; 
     }
 
     //Em construção, validar se o usuario tem permissão para excluir

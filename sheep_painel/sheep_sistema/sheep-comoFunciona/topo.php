@@ -1,5 +1,5 @@
 <?php
-   $sheep->Leitura('banners' ,"WHERE tipo = 'banner'");
+   $sheep->Leitura('banners', "WHERE tipo = 'comoFunciona'");
    $bannerCapa = Formata::Resultado($sheep);
    if($bannerCapa){
     $contBanner = $sheep->getContaLinhas();
@@ -16,7 +16,7 @@
       <div class="card-body">
         <ul class="nav nav-pills" style="margin:5px; float:right;">
           <li class="nav-item">
-            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-banners/criar&token=<?= $_SESSION['timeWT'] ?> ">Novo </a>
+            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-comoFunciona/criar&token=<?= $_SESSION['timeWT'] ?> ">Novo </a>
           </li>
 
          
@@ -24,7 +24,7 @@
         <ul class="nav nav-pills">
 
           <li class="nav-item">
-            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-banners/index&token=<?= $_SESSION['timeWT'] ?>">Todos <span class="badge badge-white"><?= $contBanner ?></span></a>
+            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-comoFunciona/index&token=<?= $_SESSION['timeWT'] ?>">Todos <span class="badge badge-white"><?= $contBanner ?></span></a>
           </li>
 
           

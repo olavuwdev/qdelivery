@@ -17,6 +17,11 @@ class Banners
             exit();
         }
 
+        if($this->verificaExistencia('link')){
+            return $this->resultado = false;
+            exit();
+        }
+
         $this->addCapa();
         $this->filtroBanco();
         return $this->salvarNoBanco();
@@ -30,10 +35,27 @@ class Banners
         $this->id = $id; 
         $this->data = $data;
 
+        if($this->verificaExistenciaUp('link')){
+            return $this->resultado = false;
+            exit();
+        }
+
         $this->filtroBanco();
         $this->atualizaCapa();
         return $this->atualizaNoBanco();
 
+    }
+
+    public function excluirBanner(int $id):bool
+    {
+        $this->id = $id;
+        if(!$this->id){
+            return $this->resultado = false;
+            exit();
+        }
+
+        $this->removerCapa();
+        return $this->removerBannerDoBanco();
     }
 
 
@@ -79,6 +101,18 @@ class Banners
             }
 
     }
+
+    private function verificaExistencia($campo): array
+    {
+        $ler = new Ler();
+        $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
+        return $ler->getResultado();
+    }
+    private function verificaExistenciaUp($campo): bool{
+        $ler = new Ler();
+        $ler->Leitura(self::BD, "WHERE {$campo} = :{$campo}", "{$campo}={$this->data[$campo]}");
+        return $ler->getContaLinhas() > 0; 
+    }
     private function salvarNoBanco():bool
     {
         $criar = new Criar();
@@ -89,7 +123,7 @@ class Banners
          
     }
 
-    private function atualizaBanners():void
+    private function atualizaCapa():void
     {
         if(isset($this->data['capa'])){
             $lerCapa = new Ler();
@@ -113,12 +147,31 @@ class Banners
         }
 
     }
+    private function removerCapa():void
+    {
+        $lerCapa = new Ler();
+        $lerCapa->Leitura(self::BD, "WHERE id = :id", "id={$this->id}");
+        if($lerCapa->getResultado()){
+            $capaBanner = SHEEP_IMG_BANNERS . $lerCapa->getResultado()[0]['capa'];
+            if(file_exists($capaBanner) && !is_dir($capaBanner)){
+                unlink($capaBanner);
+            }
+        }
+    }
 
     private function atualizaNoBanco():bool
     {
         $atualizar = new Atualizar();
         $atualizar->Atualizando(self::BD, $this->data , "WHERE id = :id", "id={$this->id}");
         if($atualizar->getResultado()){
+            return $this->resultado = true;
+        }
+    }
+    private function removerBannerDoBanco():bool
+    {
+        $excluir = new Excluir();
+        $excluir->Remover(self::BD, "WHERE id= :id", "id={$this->id}");
+        if($excluir->getResultado()){
             return $this->resultado = true;
         }
     }

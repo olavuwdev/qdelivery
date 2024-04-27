@@ -13,10 +13,10 @@ if(isset($id)){
     $excluir = new Banners();
     $excluir->excluirBanner($id);
     if($excluir->getResultado()){
-        header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-banners/index&sucesso=true&token={$_SESSION['timeWT']}");
+        header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-comoFunciona/index&sucesso=true&token={$_SESSION['timeWT']}");
         
     }else{
-        header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-banners/index&erro=true&token={$_SESSION['timeWT']}");
+        header("Location: " . URL_CAMINHO_PAINEL . FILTROS . "sheep-comoFunciona/index&erro=true&token={$_SESSION['timeWT']}");
     }
 }
 

@@ -19,6 +19,7 @@
           <li><a class="nav-link" href="<?= FILTROS ?>sheep-dados/index&token=<?=$_SESSION['timeWT']?>">Configurações</a></li>
           <li><a class="nav-link" href="<?= FILTROS ?>sheep-efi/index&token=<?=$_SESSION['timeWT']?>">Banco EFI</a></li>
           <li><a class="nav-link" href="<?= FILTROS ?>sheep-redes/index&token=<?=$_SESSION['timeWT']?>">Redes Sociais</a></li>
+          <li><a class="nav-link" href="<?= FILTROS ?>sheep-comoFunciona/index&token=<?=$_SESSION['timeWT']?>">Como funciona</a></li>
         
         </ul>
       </li>
