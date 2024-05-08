@@ -11,7 +11,7 @@ require_once("sheep_checa.php");
   <!-- Sheep CSS -->
   <?php require_once('sheep_css.php') ?>
   <!-- Sheep CSS -->
-  <link rel='shortcut icon' type='image/x-icon' href='<?= SHEEP_ICONE ?>' />
+  <link rel="shortcut icon" href="<?= CAMINHO_TEMAS ?>/assets/img/QuentinhaCirgularLogo.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 

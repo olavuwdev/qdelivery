@@ -34,6 +34,16 @@
         
         </ul>
       </li>
+      
+      <li class="menu-header">Produtos</li>
+      <li class="dropdown">
+      <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-cart"></i><span>Loja</span></a>
+      <ul class="dropdown-menu">
+      <li><a href="<?= FILTROS ?>sheep-produtos/index&token=<?= $_SESSION['timeWT'] ?>">Produtos</a></li>
+      <li><a href="<?= FILTROS ?>sheep-classificacao/index&token=<?= $_SESSION['timeWT'] ?>">Classificações</a></li>
+      </ul>
+      </li>
+
 
       <li class="menu-header">Clientes e Usuários</li>
       <li class="dropdown">
