@@ -70,7 +70,7 @@
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Valor Promocional(Obrigatório)</label>
 
                   <div class="col-md-7">
-                    <input type="number" class="form-control" name="valor_promocao" placeholder="Digite o valor promocinal" step="0.01" required>
+                    <input type="number" class="form-control" name="valor_promocao" placeholder="Digite o valor promocinal" step="0.01">
                   </div>
                  
                 </div> 

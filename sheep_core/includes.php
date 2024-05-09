@@ -41,6 +41,8 @@ define('SHEEP_IMG_LOGOMARCA', '../img-logo/');
 define('SHEEP_IMG_SLIDE', '../img-slides/');
 //CAMINHO PASTA BANNERS DO SITE 
 define('SHEEP_IMG_BANNERS', '../img-banners/');
+//CAMINHO PASTA PRODUTOS DO SITE 
+define('IMG_PRODUTOS', '../img-produtos/');
 
 
 

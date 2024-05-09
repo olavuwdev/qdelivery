@@ -48,7 +48,18 @@
 
 <!-- FIM COMO FUNCIONA O -->
 
+<!-- TESTANDO FUNCIONALIDADE VIEW -->
 
+<?php
+
+$sheep->Leitura('dados', "WHERE tipo = 'config' ORDER BY ultima_atualizacao DESC");
+$sheepEmpresa = Formata::Resultado($sheep);
+if($sheepEmpresa){
+    foreach($sheep->getResultado() as $empresa){
+    $empresa  = (object) $empresa;
+}
+
+?>
 
 <!-- INICIO SOBRE A EMPRESA SITE -->
 
@@ -59,12 +70,16 @@
         </div>
         <div class="content">
             <h3>Quentinha Delivery: Quentinha <span>rápida e barata</span>  </h3>
+            <!--
             <p>
                 Empresa fundada com proposito de fornecer comida de qualidade e barata para a cidade de Mossoró/RN.
             </p>
             <p>
                 Criada em 2023, a <span>Quentinha Delivery</span> até os dias de hoje entrega comida boa e barata para todos os clientes.
             </p>
+            -->
+            <p><?= $empresa->descricao ?></p>
+            <?php } ?>
             <a href="" class="btn">Saiba mais</a>
         </div>
     </div>
