@@ -559,14 +559,14 @@ section{
     background: black;
 }
 .rodape .box-container .box .link{
-    display: block;
-    line-height:2 ;
+    line-height:1 ;
     padding: 2rem;
     font-size: 1.2rem;
-    text-decoration: underline;
+    text-decoration: none;
+    border: 1px solid #000; border-radius: 5px; ; color: #000; display: inline-block; ;
 }
 .rodape .box-container .box .link:hover{
-    color: #fff;
+    color: #aca5a5;
 }
 .rodape .direitos{
     font-size: 1.2rem;

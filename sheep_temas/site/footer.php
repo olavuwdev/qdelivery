@@ -30,7 +30,8 @@ if($sheepEmpresa){
             <!-- INICIO ITEM RODAPE SITE -->
         <div class="box">
             <h3>Faça seu pedido</h3>
-            <a class="link" title="Whastapp" href="https://api.whatsapp.com/send/?phone=55<?=$empresa->whatsapp?>&text=Olá%2C+gostaria+de+fazer+um+pedido%21&type=phone_number&app_absent=0"><?= $empresa->whatsapp?></a>
+            <a class="link" title="WhatsApp" href="https://api.whatsapp.com/send/?phone=55<?= $empresa->whatsapp ?>&text=Olá%2C+gostaria+de+fazer+um+pedido%21&type=phone_number&app_absent=0"><?= $empresa->whatsapp ?></a>
+            <br><br>
             <a class="link" href="mailto:quentinhadelivery@gmail.com" title="quentinhadelivery@gmail.com">quentinhadelivery@gmail.com</a>
 
             </div>

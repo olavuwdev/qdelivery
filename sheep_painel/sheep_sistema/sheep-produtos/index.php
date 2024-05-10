@@ -43,30 +43,37 @@
 </thead>
 <tbody>
 <?php
-                    
-                               
+    $sheep->Leitura('produto', "WHERE tipo = 'produto' ORDER BY data DESC");
+    $produtoPainel = Formata::Resultado($sheep);
+    if($produtoPainel){
+      foreach($sheep->getResultado() as $produto){
+        $produto = (object) $produto;                
 ?>
 <tr>
-<td>7</td>
+<td><?=$produto->id?></td>
 <td>
-<a href="#" data-toggle="modal" data-target="#ver">
-<img src="assets/img/sem-imagem.png" alt="" width="35">                    
+  <a href="#" data-toggle="modal" data-target="#ver<?= $produto->id ?>">
+  <?php if($produto->capa){?>
+    <img src="<?= IMG_PRODUTOS . $produto->capa ?>" alt="<?= $produto->titulo?>" width="35">                    
+    <?php }else{ ?>
+      <img src="assets/img/sem-imagem.png" alt="<?= $produto->titulo?>" width="35">                    
+<?php }?>
 </a>
 </td>
-<td>77/77/7777</td>
-<td> Titulo </td>
-<td><b>R$ 77</b></td>
-<td><a href="" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
+<td><?= date('d/m/Y', strtotime($produto->data))?></td>
+<td> <?= $produto->titulo?> </td>
+<td><b>R$ <?= $produto->valor_promocao ? $produto->valor_promocao : $produto->valor?></b></td>
+<td><a href="<?= URL_CAMINHO_PAINEL . FILTROS . "sheep-produtos/atualizar&editar={$produto->id}&token=" . $_SESSION['timeWT']?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a></td>
 <td>
 <form action="<?= URL_CAMINHO_PAINEL . FILTROS . 'sheep-produtos/filtros/excluir&token=' . $_SESSION['timeWT']?>" method="post">
-<!--<input type="hidden" name="sheep-firewall" value="<?= $_SESSION['_sheep_firewall'] ?>">-->
-<input type="hidden" name="id" value="">
+<!-- <input type="hidden" name="sheep-firewall" value="<?= $_SESSION['_sheep_firewall'] ?>">-->
+<input type="hidden" name="id" value="<?= $produto->id?>">
 <button type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash-alt"></i></button>
 </form>
 </td>
 </tr>
 <?php
-
+    }}
 ?>
 </tbody>
 </table>
@@ -79,26 +86,34 @@
 </div>
 </section>
 <?php
-
+$sheep->Leitura('produto', "WHERE tipo = 'produto' ORDER BY data DESC");                    
+$produtosPainel = Formata::Resultado($sheep);  
+if($produtosPainel){
+foreach($sheep->getResultado() as $produto){
+$produto = (object) $produto;
 ?>
 <!-- INICIO MODAL SUPORTE MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
 <!-- basic modal -->
-<div class="modal fade" id="ver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ver<?= $produto->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Titulo </h5>
+<h5 class="modal-title" id="exampleModalLabel"><?= $produto->titulo ?> </h5>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
 <div class="modal-body">
 <p>
-<img alt="" src="assets/img/sem-imagem.png" style="width:100%;">
+<?php if($produto->capa){?>
+  <img src="<?= IMG_PRODUTOS . $produto->capa ?>" alt="<?= $produto->titulo ?>" style="width:100%;">   
+<?php }else{?>
+  <img src="assets/img/sem-imagem.png" alt="<?= $produto->titulo ?>" style="width:100%;">   
+<?php }?>
 </p>
-<p>Criado(a): Data</p>
-<p>Titulo: Titulo</p>
-<p>Valor: R$ 77</p>
+<p>Criado(a): <?= date('d/m/Y',strtotime($produto->data)) ?></p>
+<p>Titulo: <?= $produto->titulo ?></p>
+<p>Valor: R$ <?= $produto->valor_promocao ? $produto->valor_promocao : $produto->valor ?></p>
               
 </div>
 <div class="modal-footer bg-whitesmoke br">
@@ -107,7 +122,9 @@
 </div>
 </div>
 </div>
-
+<?php 
+} } 
+?>
 <!-- FIM MODAL SUPORTE MAYKONSILVEIRA.COM.BR MAYKON SILVEIRA--->
   <?php
   $sheep = null;

@@ -73,10 +73,9 @@ $titulo = "Fale conostco"
 
 <!-- FIM FORMULARIO DE CONTATOS DO SITE -->
 
-
 <!-- INICIO MAPA GOOGLE DO SITE -->
 <br><br>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1181.2354478019986!2d-37.32568775642441!3d-5.2333580335978915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ba07db8185bc5b%3A0xb1156d2070715e5a!2sR.%20Girlane%20Gomes%20Pereira%2C%20470%20-%20Alto%20do%20Sumar%C3%A9%2C%20Mossor%C3%B3%20-%20RN%2C%2059633-830!5e0!3m2!1spt-BR!2sbr!4v1710295982401!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.139964737275!2d-37.3224144885665!3d-5.240697452714479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ba080acb4836ff%3A0xfc86ae29cbc5d649!2sR.%20Rio%20Claro%2C%2030%20-%20Alto%20do%20Sumar%C3%A9%2C%20Mossor%C3%B3%20-%20RN%2C%2059634-116!5e0!3m2!1spt-BR!2sbr!4v1715298584361!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 <!-- FIM MAPA GOOGLE DO SITE -->
 
 </section>

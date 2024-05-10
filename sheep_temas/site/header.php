@@ -86,7 +86,7 @@
     
     
     <!-- INICIO LOGIN TOPO DO SITE-->
-        <form action="" class="login-form">
+        <form method="post" action="sheep_painel/sheep-filtros/entrar.php" novalidate="" class="login-form">
             <h3>Acesso a conta</h3>
             <input type="email" name="email" placeholder="Seu E-email" class="box">
             <input type="password" name="senha" placeholder="Sua senha" class="box">
