@@ -9,7 +9,14 @@ $sheepEmpresa = Formata::Resultado($sheep);
 if($sheepEmpresa){
     foreach($sheep->getResultado() as $empresa){
     $empresa  = (object) $empresa;
-}
+    }
+    $sheep->Leitura('app_cidades', "WHERE cidade_id = {$empresa->cidade}");
+    $sheepCidade = Formata::Resultado($sheep);
+    if($sheepCidade){
+        foreach($sheep->getResultado() as $cidade){
+            $cidade = (object) $cidade;
+        } 
+    }
 
 ?>
 <section class="rodape">
@@ -41,10 +48,10 @@ if($sheepEmpresa){
         <div class="box">
             <h3>Localização</h3>
                 <p> 
-                    Rua Lourival Caetano Ferreira, 470 <br>
-                    Alto do Sumaré <br>
-                    Mossoró/RN <br>
-                    59633-710
+                    <?= $empresa->endereco . ", " . $empresa->numero ?> <br>
+                    <?= $empresa->bairro?> <br>
+                    <?= $cidade->cidade_nome . "/" . $cidade->cidade_uf?><br>
+                    <?= $empresa->cep?>
 
 
                 </p>

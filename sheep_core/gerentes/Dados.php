@@ -104,6 +104,7 @@ class Dados
         $this->data['email'] = (string) $this->data['email'];
         $this->data['endereco'] = (string) $this->data['endereco'];
         $this->data['numero'] = (int) $this->data['numero'];
+        $this->data['bairro'] = (string) $this->data['bairro'];
         $this->data['estado'] = (int) $this->data['estado'];
         $this->data['cidade'] = (int) $this->data['cidade'];
         $this->data['cep'] = (string) $this->data['cep'];

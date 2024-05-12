@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/04/2024 às 03:30
+-- Tempo de geração: 12/05/2024 às 14:42
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -5679,6 +5679,38 @@ INSERT INTO `banco_efi` (`id`, `chave_1`, `chave_2`, `status`, `usuario`, `ultim
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL,
+  `capa` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `tipo` varchar(50) DEFAULT NULL,
+  `tipo_cadastro` varchar(30) DEFAULT NULL,
+  `link` varchar(255) NOT NULL,
+  `data` datetime NOT NULL,
+  `dia` varchar(2) NOT NULL,
+  `mes` varchar(2) NOT NULL,
+  `ano` varchar(4) NOT NULL,
+  `ultima_atualizacao` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `banners`
+--
+
+INSERT INTO `banners` (`id`, `capa`, `titulo`, `tipo`, `tipo_cadastro`, `link`, `data`, `dia`, `mes`, `ano`, `ultima_atualizacao`) VALUES
+(1, 'images\\2024\\04\\teste-banner-1713834198.jpg', 'teste', 'banner', 'atualizar', 'https://localhost/qdelivery//sheep_painel/sheep.php?m=sheep-redes/index&amp;#38;token=2', '2024-04-22 22:03:19', '22', '04', '2024', '2024-04-22 22:03:19'),
+(2, 'images/2024/04/teste2-banner-1713920992.jpg', 'teste2', 'banner', 'criar', 'https://www.instagram.com/quentinhadelivery0', '2024-04-23 22:09:52', '23', '04', '2024', '2024-04-23 22:09:52'),
+(4, 'images/2024/04/faca-seu-pedido-banner-1714184590.png', 'Faça Seu Pedido', 'comoFunciona', 'atualizar', '1', '2024-04-26 23:23:10', '26', '04', '2024', '2024-04-26 23:23:10'),
+(6, 'images/2024/04/entrega-rapida-banner-1714188105.png', 'Entrega Rápida', 'comoFunciona', 'criar', '2', '2024-04-27 00:21:45', '27', '04', '2024', '2024-04-27 00:21:45'),
+(7, 'images/2024/04/pagamento-facil-banner-1714188168.png', 'Pagamento Fácil', 'comoFunciona', 'atualizar', '3', '2024-04-27 00:22:48', '27', '04', '2024', '2024-04-27 00:22:48'),
+(8, 'images/2024/04/bom-apetite-banner-1714188200.png', 'Bom Apetite', 'comoFunciona', 'atualizar', '4', '2024-04-27 00:23:20', '27', '04', '2024', '2024-04-27 00:23:20');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `dados`
 --
 
@@ -5695,6 +5727,7 @@ CREATE TABLE `dados` (
   `email` varchar(255) NOT NULL,
   `endereco` varchar(255) DEFAULT NULL,
   `numero` int(11) DEFAULT NULL,
+  `bairro` varchar(255) NOT NULL,
   `estado` int(11) NOT NULL,
   `cidade` int(11) NOT NULL,
   `cep` varchar(100) NOT NULL,
@@ -5708,8 +5741,44 @@ CREATE TABLE `dados` (
 -- Despejando dados para a tabela `dados`
 --
 
-INSERT INTO `dados` (`id`, `logo`, `icone`, `nome`, `frete`, `cnpj`, `descricao`, `fone`, `whatsapp`, `email`, `endereco`, `numero`, `estado`, `cidade`, `cep`, `senha_email`, `usuario`, `ultima_atualizacao`, `tipo`) VALUES
-(88888, 'images/2024/04/quentinhadelivery-logo-23-15-18-1712628918.jpg', 'images/2024/04/quentinhadelivery-icone-23-15-1712628918.jpg', 'QuentinhaDelivery', 10.00, '15.124.512/1212-12', 'descricao', '(84)8888-8888', '(84)98888-8888', 'quentinha@delivery.com', 'rua joao', 88, 1, 2, '59.626-180', '123', 1, '2024-04-04 20:51:22', 'config');
+INSERT INTO `dados` (`id`, `logo`, `icone`, `nome`, `frete`, `cnpj`, `descricao`, `fone`, `whatsapp`, `email`, `endereco`, `numero`, `bairro`, `estado`, `cidade`, `cep`, `senha_email`, `usuario`, `ultima_atualizacao`, `tipo`) VALUES
+(88888, 'images/2024/04/quentinhadelivery-logo-23-15-18-1712628918.jpg', 'images/2024/04/quentinhadelivery-icone-23-15-1712628918.jpg', 'QuentinhaDelivery', 10.00, '15.124.512/1212-12', '<p>Empresa fundada com proposito de fornecer comida de qualidade e barata para a cidade de Mossoró/RN.<br>Criada em 2023, a<b> Quentinha Delivery</b> até os dias de hoje entrega comida boa e barata para todos os clientes.</p>', '(84)8888-8888', '(84)99666-2653', 'quentinha@delivery.com', 'R Rio Claro', 30, 'Cidade Alta - Sumaré', 20, 3196, '59.626-180', '123', 1, '2024-04-04 20:51:22', 'config');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produto`
+--
+
+CREATE TABLE `produto` (
+  `id` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `capa` varchar(255) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `valor_promocao` decimal(10,2) DEFAULT NULL,
+  `resumo` varchar(255) DEFAULT NULL,
+  `usuario` int(11) NOT NULL,
+  `tipo` varchar(40) DEFAULT NULL,
+  `tipo_cadastro` varchar(40) DEFAULT NULL,
+  `data` date NOT NULL,
+  `dia` varchar(2) DEFAULT NULL,
+  `mes` varchar(2) DEFAULT NULL,
+  `ano` varchar(4) DEFAULT NULL,
+  `ultima_atualizacao` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `produto`
+--
+
+INSERT INTO `produto` (`id`, `url`, `capa`, `titulo`, `valor`, `valor_promocao`, `resumo`, `usuario`, `tipo`, `tipo_cadastro`, `data`, `dia`, `mes`, `ano`, `ultima_atualizacao`) VALUES
+(1, 'teste', 'teste', 'teste', 21.00, 2.00, 'testea', 1, 'testea', 'testea', '2024-05-07', '2', '12', '2003', '2024-05-07 21:46:33'),
+(9, 'batata-frita-qd-1715216651', '', 'Batata frita', 12.00, NULL, 'ew', 1, 'produto', 'criar', '2024-05-08', '08', '05', '2024', '2024-05-08 22:04:11'),
+(10, 'ultimo-teste-qd-1715217126', '', 'Ultimo teste', 12.00, 10.00, 'last', 1, 'produto', 'criar', '2024-05-08', '08', '05', '2024', '2024-05-08 22:12:06'),
+(11, 'batata-frita-qd-1715219707', 'images/2024/05/batata-frita-qd-1715219707.jpg', 'Batata frita', 10.00, 5.00, 'Teste batata', 1, 'produto', 'criar', '2024-05-08', '08', '05', '2024', '2024-05-08 22:55:07'),
+(12, 'batata-frita-qd-1715307690', 'images/2024/05/batata-frita-qd-1715307690.png', 'Batata frita', 10.00, 0.00, 'teste', 1, 'produto', 'criar', '2024-05-09', '09', '05', '2024', '2024-05-09 23:21:30'),
+(13, 'batata-frita-qd-1715219707', 'images/2024/05/batata-frita-qd-1715219707.jpg', 'Batata frita', 10.00, 5.00, 'Teste batata 2', 1, 'produto', 'criar', '2024-05-09', '09', '05', '2024', '2024-05-09 22:55:07');
 
 -- --------------------------------------------------------
 
@@ -5729,6 +5798,46 @@ CREATE TABLE `redes_sociais` (
   `mes` varchar(2) DEFAULT NULL,
   `ano` varchar(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `redes_sociais`
+--
+
+INSERT INTO `redes_sociais` (`id`, `icone`, `nome`, `link`, `tipo`, `tipo_cadastro`, `data`, `dia`, `mes`, `ano`) VALUES
+(1, 'fa fa-instagram', 'instagram', 'https://www.instagram.com/ollavo_adriel', 'redesSociais', 'criar', '2024-04-11 23:36:38', '11', '04', '2024'),
+(2, 'fa fa-bitcoin', 'Facebook', 'https://www.facebook.com/Ollavo Adriel', 'redesSociais', 'atualizar', '2024-04-15 20:42:40', '15', '04', '2024'),
+(3, 'fa fa-android', 'teste', 'https://www.facebook.com/teste', 'redesSociais', 'criar', '2024-04-15 23:14:46', '15', '04', '2024');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `slide`
+--
+
+CREATE TABLE `slide` (
+  `id` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `capa` varchar(255) NOT NULL,
+  `titulo_um` varchar(255) DEFAULT NULL,
+  `titulo_dois` varchar(255) DEFAULT NULL,
+  `titulo_tres` varchar(255) DEFAULT NULL,
+  `titulo_quatro` varchar(255) DEFAULT NULL,
+  `cor_um` varchar(70) DEFAULT NULL,
+  `cor_dois` varchar(70) DEFAULT NULL,
+  `text_btn` varchar(100) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `tipo_cadastro` varchar(50) DEFAULT NULL,
+  `data` datetime NOT NULL,
+  `ultima_atualizacao` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `slide`
+--
+
+INSERT INTO `slide` (`id`, `url`, `capa`, `titulo_um`, `titulo_dois`, `titulo_tres`, `titulo_quatro`, `cor_um`, `cor_dois`, `text_btn`, `link`, `tipo_cadastro`, `data`, `ultima_atualizacao`) VALUES
+(1, '', 'images/2024/04/2024-04-17-slide-21-04-qd-1713400948.png', 'A', 'melhor', 'quentinha', 'da Cidade', '#99ff00', '#ffffff', 'Comprar agora', 'https://www.instagram.com/quentinhadelivery0', 'criar', '2024-04-17 21:42:28', '2024-04-16 21:51:22'),
+(2, '', 'images/2024/04/2024-04-16-slide-21-04-qd-1713315137.png', 'Faça', 'Ja', 'o seu', 'Pedido', '#c8ff00', '#ffffff', 'Comprar agora', 'https://www.instagram.com/quentinhadelivery0', 'criar', '2024-04-18 20:32:00', '2024-04-16 21:52:17');
 
 -- --------------------------------------------------------
 
@@ -5769,8 +5878,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `foto`, `nome`, `sobrenome`, `cpf`, `email`, `nascimento`, `senha`, `whatsapp`, `endereco`, `numero`, `cep`, `estado`, `cidade`, `status`, `nivel`, `data`, `dia`, `mes`, `ano`, `usuario`, `tipo`, `tipo_cadastro`, `ultima_atualizacao`) VALUES
 (1, 'images/2024/04/olavo-adriel-adriel-1712183684-2024-04-03-19-34.jpeg', 'Olavo Adriel', 'Adriel', '777.777.777-22', 'ollavoadriel@gmail.com', '2003-02-12', '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '', 'Rua jesus te ama', 77, '15.121-245', 1, 1, 'S', 'M', '2024-03-21 02:24:35', '20', '03', '2030', 1, 'usuarios', 'atualizar', '2024-03-20 22:24:35'),
-(2, 'images/2024/04/olavo-teste-lima-1712109744-2024-04-02-23-02.jpeg', 'Olavo Teste', 'Lima', '777.777.777-77', 'teste@gmail.com', '0000-00-00', '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '', 'Rua jesus te ama', 77, '', 1, 1, 'S', 'C', '2024-03-21 02:24:35', '20', '03', '2030', 1, 'usuarios', 'atualizar', '2024-03-20 22:24:35'),
-(3, 'images/2024/04/senku-shin-1712109514-2024-04-02-22-58.jpeg', 'Senku', 'Shin', '542.450.454-01', 'senku@gmail.com', '2004-12-12', '$2y$10$mWFluBo.e9Dtl0W2PdPBv.z2bnRN1knM0nDvYZApmjfp96hhsQW6u', '(54)54554-5454', 'rua joao', 231, '77.777-777', 20, 3196, 'N', 'C', '2024-03-31 22:19:42', '31', '03', '2024', 1, 'usuarios', 'atualizar', '2024-03-31 22:19:43');
+(2, 'images/2024/04/olavo-teste-lima-1712109744-2024-04-02-23-02.jpeg', 'Olavo Teste', 'Lima', '777.777.777-72', 'teste@gmail.com', '0000-00-00', '$2y$10$IQOSrd1AqRwiybunWFAx7O3xczAjtl2UvGNwP.zeO0jj5bHyaEYf.', '', 'Rua jesus te ama', 77, '', 1, 1, 'N', 'C', '2024-03-21 02:24:35', '20', '03', '2030', 1, 'usuarios', 'atualizar', '2024-03-20 22:24:35'),
+(3, 'images/2024/04/senku-shin-1712109514-2024-04-02-22-58.jpeg', 'Senku', 'Shin', '777.777.777-77', 'senku@gmail.com', '2004-12-12', '$2y$10$mWFluBo.e9Dtl0W2PdPBv.z2bnRN1knM0nDvYZApmjfp96hhsQW6u', '(54)54554-5454', 'rua joao', 231, '77.777-777', 20, 3196, 'S', 'C', '2024-03-31 22:19:42', '31', '03', '2024', 1, 'usuarios', 'atualizar', '2024-03-31 22:19:43');
 
 --
 -- Índices para tabelas despejadas
@@ -5796,15 +5905,33 @@ ALTER TABLE `banco_efi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `dados`
 --
 ALTER TABLE `dados`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `redes_sociais`
 --
 ALTER TABLE `redes_sociais`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `slide`
+--
+ALTER TABLE `slide`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5836,16 +5963,34 @@ ALTER TABLE `banco_efi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73215;
 
 --
+-- AUTO_INCREMENT de tabela `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de tabela `dados`
 --
 ALTER TABLE `dados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88889;
 
 --
+-- AUTO_INCREMENT de tabela `produto`
+--
+ALTER TABLE `produto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de tabela `redes_sociais`
 --
 ALTER TABLE `redes_sociais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `slide`
+--
+ALTER TABLE `slide`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

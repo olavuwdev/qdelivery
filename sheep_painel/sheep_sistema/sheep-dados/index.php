@@ -160,10 +160,17 @@
                      <div class="col-md-4">
                        <input type="text" class="form-control" name="endereco" value="<?=$dados->endereco ? $dados->endereco : null?>">
                      </div>
-
-
+                     
+                     
                      <div class="col-md-3">
                        <input type="number" class="form-control" name="numero" value="<?=$dados->numero ? $dados->numero : null?>">
+                      </div>
+
+                   </div>
+                   <div class="form-group row mb-4">
+                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bairro</label>
+                     <div class="col-md-7">
+                       <input type="text" class="form-control" name="bairro" value="<?=$dados->bairro ? $dados->bairro : null?>">
                      </div>
 
                    </div>
@@ -190,7 +197,7 @@
                                                
                                             ?>
                                             <option value="<?= $estado->estado_id ?>" <?= $dados->estado == $estado->estado_id ? 'selected' : null ?>><?= $estado->estado_nome ?></option>
-                                            <?php }} ?>
+                                            <?php } ?>
 
 
                                         </select>
@@ -203,7 +210,7 @@
                                         <select class="form-control select2" name="cidade" id="load_cidades">
 
                                         <?php 
-                                                $sheep->Leitura('app_cidades', "ORDER BY cidade_nome ASC");
+                                                $sheep->Leitura('app_cidades', "WHERE estado_id  = {$dados->estado_id} ORDER BY cidade_nome ASC");
                                                 $cidadeUsuario = Formata::Resultado($sheep);
                                                 if($cidadeUsuario){
                                                     foreach($sheep->getResultado() as $cidade){
@@ -211,7 +218,7 @@
                                                
                                             ?>
                                             <option value="<?= $cidade->cidade_id ?>" <?= $dados->cidade == $cidade->cidade_id ? 'selected' : null ?>><?= $cidade->cidade_nome ?></option>
-                                            <?php }} ?>
+                                            <?php }}}?>
 
 
                                         </select>

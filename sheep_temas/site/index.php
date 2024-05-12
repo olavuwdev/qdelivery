@@ -206,7 +206,7 @@ require_once('header.php');
 <section class="empresa">
     <div class="row">
         <div class="empresa-img">
-            <img src="<?= CAMINHO_TEMAS?>/assets/img/empresa_video.gif" alt="780x900">
+            <img src="<?= CAMINHO_TEMAS?>/assets/img/empresa_video.gif" alt="400x400">
         </div>
         <div class="content">
             <h3>Quentinha Delivery: Quentinha <span>rápida e barata</span>  </h3>
