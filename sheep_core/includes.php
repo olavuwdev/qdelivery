@@ -197,7 +197,7 @@ define('SHEEP_ICONE', 'assets/img/logo/icone.png');
 define('SHEEP_LOGO', 'assets/img/logo/LOGO-SHEEP-PHP-MAYKON-SILVEIRA2.png');
 define('QUENTINHA_LOGO', 'assets/img/logo/moto.png');
 // TITULO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
-define('SHEEP_TITULO_PAINEL', 'Quentinha Delivery - Administrativo');
+define('SHEEP_TITULO_PAINEL', 'ADM - Quentinha Delivery');
 
 // RODAPE TEXTO PAINEL SHEEP PHP - CURSOS ONLINE MAYKONSILVEIRA.COM.BR
 define('SHEEP_RODAPE_PAINEL', '<a href="https://maykonsilveira.com.br/" title="EAD MaykonSilveira.com.br">Todos os Direitos Reservados a EAD MaykonSilveira.com.br SHEEP PHP</a>');

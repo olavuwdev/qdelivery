@@ -1,5 +1,11 @@
 <?php
-
+$sheep->Leitura('produto', "WHERE  tipo = 'produto'");
+$contaProdutoTopo = Formata::Resultado($sheep);
+if($contaProdutoTopo){
+  $contaProduto = $sheep->getContaLinhas();
+}else{
+  $contaProduto = 0; 
+}
 
 ?>
 
@@ -20,7 +26,7 @@
         <ul class="nav nav-pills">
 
           <li class="nav-item">
-            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-produtos/index&token=<?= $_SESSION['timeWT'] ?>">Todos <span class="badge badge-white">77</span></a>
+            <a class="nav-link active" href="<?= URL_CAMINHO_PAINEL . FILTROS ?>sheep-produtos/index&token=<?= $_SESSION['timeWT'] ?>">Todos <span class="badge badge-white"><?= $contaProduto ?></span></a>
           </li>
 
          
