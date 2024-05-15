@@ -41,16 +41,20 @@
 </thead>
 <tbody>
 <?php
-
+    $sheep->Leitura('produto', "WHERE tipo = 'produto' ORDER BY data DESC");
+    $produtoPainel = Formata::Resultado($sheep);
+    if($produtoPainel){
+      foreach($sheep->getResultado() as $produto){
+        $produto = (object) $produto;    
 ?>
  <tr>
-<td>77</td>
-<td>data</td>
-<td>MaykonSilveira.com.br</td>
-<td>R$ 77</td>
+<td><?= $produto->id?></td>
+<td><?= date('d/m/Y', strtotime($produto->data)) ?></td>
+<td><?= $produto->titulo ?></td>
+<td><?=$produto->valor_promocao ? $produto->valor_promocao : $produto->valor ?></td>
 </tr>
 <?php
-
+      }}
 ?>
 </tbody>
 </table>
