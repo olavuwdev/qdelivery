@@ -207,17 +207,17 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cidade</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <select class="form-control select2" name="cidade" id="load_cidades">
+                                        <select class="form-control select2" name="cidade" id="load_cidades" required>
 
                                         <?php 
-                                                $sheep->Leitura('app_cidades', "WHERE estado_id  = {$dados->estado_id} ORDER BY cidade_nome ASC");
+                                                $sheep->Leitura('app_cidades', "WHERE estado_id  = {$dados->estado} ORDER BY cidade_nome ASC");
                                                 $cidadeUsuario = Formata::Resultado($sheep);
                                                 if($cidadeUsuario){
                                                     foreach($sheep->getResultado() as $cidade){
                                                         $cidade = (object) $cidade;
                                                
                                             ?>
-                                            <option value="<?= $cidade->cidade_id ?>" <?= $dados->cidade == $cidade->cidade_id ? 'selected' : null ?>><?= $cidade->cidade_nome ?></option>
+                                            <option required value="<?= $cidade->cidade_id ?>" <?= $dados->cidade == $cidade->cidade_id ? 'selected' : null ?> > <?= $cidade->cidade_nome ?></option>
                                             <?php }}}?>
 
 

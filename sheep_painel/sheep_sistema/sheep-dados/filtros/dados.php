@@ -10,6 +10,7 @@
 
         $atualizar = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if(isset($atualizar['sendSheep'])){
+            var_dump($atualizar);
             unset($atualizar['sendSheep']);
 
             $atualizar['logo'] = $_FILES['logo']['tmp_name'] ? $_FILES['logo'] : null;

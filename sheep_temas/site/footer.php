@@ -10,13 +10,7 @@ if($sheepEmpresa){
     foreach($sheep->getResultado() as $empresa){
     $empresa  = (object) $empresa;
     }
-    $sheep->Leitura('app_cidades', "WHERE cidade_id = {$empresa->cidade}");
-    $sheepCidade = Formata::Resultado($sheep);
-    if($sheepCidade){
-        foreach($sheep->getResultado() as $cidade){
-            $cidade = (object) $cidade;
-        } 
-    }
+
 
 ?>
 <section class="rodape">
@@ -45,6 +39,15 @@ if($sheepEmpresa){
             <!-- FIM ITEM RODAPE SITE -->       
             
             <!-- INICIO ITEM RODAPE SITE -->
+        <?php
+            $sheep->Leitura('app_cidades', "WHERE cidade_id = {$empresa->cidade}");
+            $sheepCidade = Formata::Resultado($sheep);
+            if($sheepCidade){
+                foreach($sheep->getResultado() as $cidade){
+                    $cidade = (object) $cidade;
+                } 
+            
+        ?>
         <div class="box">
             <h3>Localização</h3>
                 <p> 
@@ -56,6 +59,7 @@ if($sheepEmpresa){
 
                 </p>
             </div>
+            <?php } ?>
             <!-- FIM ITEM RODAPE SITE -->
         </div>
         
