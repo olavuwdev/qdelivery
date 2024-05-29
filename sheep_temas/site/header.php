@@ -1,6 +1,12 @@
+<link rel="stylesheet" href="assets/css/app.min.css">
+<link rel="stylesheet" href="assets/bundles/bootstrap-social/bootstrap-social.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/components.css">
+
+
 
 <!-- INICIO CABEÇALHO DO SITE -->
-
 <header class="topo-site">
 
     <!-- INICIO LOGO DO SITE-->
@@ -89,7 +95,9 @@
         <form method="post" action="sheep_painel/sheep-filtros/entrar.php" novalidate="" class="login-form">
             <h3>Acesso a conta</h3>
             <input type="email" name="email" placeholder="Seu E-email" class="box">
+            <div class="invalid-feedback">
             <input type="password" name="senha" placeholder="Sua senha" class="box">
+            </div>
             <div class="lembrar-senha">
                 <input type="checkbox" name="lembrar" id="relembrar">
                 <label for="relembrar"> Me lembrar da senha</label>
