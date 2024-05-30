@@ -3,6 +3,10 @@
 <!-- TESTANDO FUNCIONALIDADE VIEW -->
 
 <?php
+function sanitizePhoneNumber($phoneNumber) {
+    // Remove tudo que não é dígito
+    return preg_replace('/\D/', '', $phoneNumber);
+}
 
 $sheep->Leitura('dados', "WHERE tipo = 'config' ORDER BY ultima_atualizacao DESC");
 $sheepEmpresa = Formata::Resultado($sheep);
@@ -31,11 +35,11 @@ if($sheepEmpresa){
             <!-- INICIO ITEM RODAPE SITE -->
         <div class="box">
             <h3>Faça seu pedido</h3>
-            <a class="link" title="WhatsApp" href="https://api.whatsapp.com/send/?phone=55<?= $empresa->whatsapp ?>&text=Olá%2C+gostaria+de+fazer+um+pedido%21&type=phone_number&app_absent=0"><?= $empresa->whatsapp ?></a>
+            <a class="link" title="WhatsApp" href="//api.whatsapp.com/send/?phone=55<?= sanitizePhoneNumber($empresa->whatsapp) ?>&text=Olá gostaria+de+fazer+um+pedido%21&type=phone_number&app_absent=0"> <?= $empresa->whatsapp ?> </a>
             <br><br>
-            <a class="link" href="mailto:quentinhadelivery@gmail.com" title="quentinhadelivery@gmail.com">quentinhadelivery@gmail.com</a>
+            <a class="link" href="mailto:<?= $empresa->email ?>" title="EMAIL: <?= $empresa->email ?>"><?= $empresa->email ?></a>
 
-            </div>
+        </div>
             <!-- FIM ITEM RODAPE SITE -->       
             
             <!-- INICIO ITEM RODAPE SITE -->
