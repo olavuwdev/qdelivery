@@ -24,7 +24,7 @@
 
     <!-- INICIO MENU DO SITE-->
     <nav class="menu-site">
-        <a href="index.">Inicio</a>
+        <a href="index">Inicio</a>
         <a href="empresa">Empresa</a>
         <a href="menu">Cardapio</a>
         <a href="loja">Montar pedido</a>
