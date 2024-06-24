@@ -2,6 +2,19 @@
  
 <?php
 require_once('header.php');
+function sanitizePhoneNumber($phoneNumber) {
+    // Remove tudo que não é dígito
+    return preg_replace('/\D/', '', $phoneNumber);
+}
+
+$sheep->Leitura('dados', "WHERE tipo = 'config' ORDER BY ultima_atualizacao DESC");
+$sheepEmpresa = Formata::Resultado($sheep);
+if($sheepEmpresa){
+    foreach($sheep->getResultado() as $empresa){
+    $empresa  = (object) $empresa;
+    }
+
+
 ?>
 
 <!-- INICIO SLIDE DESTAQUE SITE-->
@@ -15,7 +28,8 @@ require_once('header.php');
             <div class="swiper-slide slide" style="background: url(<?= CAMINHO_TEMAS?>/assets/img/slides/slide1.png) no-repeat;">
                 <div class="content">
                     <h3> A <span>melhor</span> quentinha <br> da cidade</h3>
-                    <a href="" class="btn">Comprar agora </a>
+                    <a href="<!-- //api.whatsapp.com/send/?phone=55<?= sanitizePhoneNumber($empresa->whatsapp) ?>&text=Olá gostaria+de+fazer+um+pedido%21&type=phone_number&app_absent=0 -->" class="btn">Comprar agora </a>
+                <!-- <?php }?> -->
                 </div>
             </div>  
 
